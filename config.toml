@@ -1,0 +1,13 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Mikey O'Brien"
+theme = "addison"
+
+
+[menu]
+  [[menu.main]]
+  identifier = "about"
+  name = "Software Engineer | Austin, TX"
+  url = "/about/"
+  weight = 1
+

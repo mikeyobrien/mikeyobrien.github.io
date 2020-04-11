@@ -1,0 +1,11 @@
+<div class="header">
+<h1 class="site-header">
+    <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+</h1>
+    <nav>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+          <a class="navtext" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+        {{ end }}
+    </nav>
+</div>

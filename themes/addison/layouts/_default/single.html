@@ -1,0 +1,28 @@
+
+{{ define "main" }}
+	<main>
+		<article>
+            <div class="post-title">
+			  <h1>{{ .Title }}</h1>
+			  <time class="time">{{ .Date.Format "Jan 2, 2006" }}</time>
+            </div>
+			<div>
+				{{ .Content }}
+			</div>
+			{{ with .Params.tags }}
+			<div>
+				<ul id="tags">
+					{{ range . }}
+					<li><a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+					{{ end }}
+				</ul>
+			</div>
+			{{ end }}
+			{{ with .Site.DisqusShortname }}
+			<div>
+				{{ template "_internal/disqus.html" . }}
+			</div>
+			{{ end }}
+		</article>
+	</main>
+{{ end }}
