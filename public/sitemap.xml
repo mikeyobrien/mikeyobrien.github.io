@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <lastmod>2020-04-11T17:29:47-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/</loc>
+    <lastmod>2020-04-11T17:29:48-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/about/</loc>
+    <lastmod>2020-04-11T17:31:32-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/setting_up_postgresql_on_macos/</loc>
+    <lastmod>2020-04-11T17:30:20-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/moving_from_san_diego_to_austin/</loc>
+    <lastmod>2020-04-11T17:29:49-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/setting_up_openvpn_on_gcp/</loc>
+    <lastmod>2020-04-11T17:29:49-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/a_new_start/</loc>
+    <lastmod>2020-04-11T17:29:49-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/creating_a_mevn_stack_boilerplate/</loc>
+    <lastmod>2020-04-11T17:29:50-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+  </url>
+  
+</urlset>

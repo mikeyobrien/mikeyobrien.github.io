@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Homepage on Mikey O&#39;Brien</title>
+    <link>http://example.org/</link>
+    <description>Recent content in Homepage on Mikey O&#39;Brien</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Apr 2020 17:29:47 -0500</lastBuildDate>
+    
+	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting up PostgreSQL on MacOS</title>
+      <link>http://example.org/posts/setting_up_postgresql_on_macos/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 -0600</pubDate>
+      
+      <guid>http://example.org/posts/setting_up_postgresql_on_macos/</guid>
+      <description>For this tutorial we will be using postgres.app from the folks at https://eggerapps.at/ to install and setup a local development server on macOS.
+Download and install using the instructions at https://postgresapp.com/
+Start postgres from the applications folder Ensure the CLI tools are working by typing,
+createdb This should result in the following error if everything was installed correctly,
+createdb: database creation failed: ERROR: database &amp;#34;username&amp;#34; already exists To create your development db enter into the console,</description>
+    </item>
+    
+    <item>
+      <title>Moving from San Diego to Austin</title>
+      <link>http://example.org/posts/moving_from_san_diego_to_austin/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>http://example.org/posts/moving_from_san_diego_to_austin/</guid>
+      <description>A couple of months ago an opportunity opened up at work to move to Austin, Texas. I toyed with the idea of making the move but never took it seriously. Next thing you know, the lease on my apartment at the time was about to end and I still had not found a new place to live in San Diego. Queue time to take the decision seriously. Growing up and attending college in San Diego I felt like it would be a good time to experience something new and committed to going.</description>
+    </item>
+    
+    <item>
+      <title>Setting up OpenVPN on GCP</title>
+      <link>http://example.org/posts/setting_up_openvpn_on_gcp/</link>
+      <pubDate>Mon, 08 Oct 2018 00:00:00 -0500</pubDate>
+      
+      <guid>http://example.org/posts/setting_up_openvpn_on_gcp/</guid>
+      <description>At work I&#39;ve recently been assigned with analyzing Ransomware samples to improve our detection heuristics. As an extra precaution I&#39;ve set up OpenVPN on a GCP instance to ensure my home IP is not being captured by bad actors.
+If you don&#39;t use GCP and would like to use this as a guide for another cloud provider feel free, as the same general steps apply.
+Compute Instance Configuration First, create a compute instance from the cloud console.</description>
+    </item>
+    
+    <item>
+      <title>A New Start</title>
+      <link>http://example.org/posts/a_new_start/</link>
+      <pubDate>Thu, 31 May 2018 00:00:00 -0500</pubDate>
+      
+      <guid>http://example.org/posts/a_new_start/</guid>
+      <description>I&#39;ve been meaning to start a blog for awhile now. In reality, I have a couple times now. Both times life got in the way from fully dedicating the time to write quality posts. Not this time. Seriously. I believe documentating one&#39;s experiences and challenges in life is a rewarding activity (for both parties). I don&#39;t remember how many time&#39;s over the past year and a half of my professional career I&#39;ve looked for the same exact blog to do the same exact thing that I&#39;ve forgotten for the 10th time.</description>
+    </item>
+    
+    <item>
+      <title>Creating a MEVN stack boilerplate</title>
+      <link>http://example.org/posts/creating_a_mevn_stack_boilerplate/</link>
+      <pubDate>Tue, 12 Jun 2018 00:00:00 -0500</pubDate>
+      
+      <guid>http://example.org/posts/creating_a_mevn_stack_boilerplate/</guid>
+      <description>This post will cover the basic steps needed to set up a project using the MEVN stack (mongo, express, vue, and nginx). Prior warning, if you are looking for a tutorial on creating a web application using the MEVN stack you may want to look elsewhere. I&#39;ll only be covering the basic project structure, packages, and tools necessary to get started.
+Prerequisites  Basic understanding of javascript Commandline familiarity Familiarity with NPM  To be begin we first need to insure that node is installed on the machine.</description>
+    </item>
+    
+  </channel>
+</rss>
