@@ -2,6 +2,7 @@ baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Mikey O'Brien"
 theme = "addison"
+googleAnalytics = "UA-34179203-1"
 
 
 [menu]
@@ -11,3 +12,13 @@ theme = "addison"
   url = "/about/"
   weight = 1
 
+[deployment]
+order = [".jpg$", ".gif$"]
+  [[deployment.targets]]
+  name="s3"
+  # S3
+  URL = "s3://mikeyobrien-blog?region=us-west-2"
+
+  [[deployment.matchers]]
+  pattern = "^.+\\.(html|xml|json)$"
+  gzip = true
