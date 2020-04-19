@@ -1,9 +1,9 @@
 +++
 title = "Setting up OpenVPN on GCP"
 date = 2018-10-08
-lastmod = 2020-04-11T17:29:49-05:00
+lastmod = 2020-04-12T16:08:15-05:00
 draft = false
-weight = 2002
+weight = 2005
 +++
 
 At work I've recently been assigned with analyzing Ransomware samples to improve

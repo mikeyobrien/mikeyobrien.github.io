@@ -19,6 +19,10 @@ img {
     white-space: nowrap;
 }
 
+.post-page-title {
+    font-smize: 4em;
+}
+
 article,
 aside,
 details,

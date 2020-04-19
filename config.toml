@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://www.mikeyobrien.com"
 languageCode = "en-us"
 title = "Mikey O'Brien"
 theme = "addison"
@@ -17,7 +17,7 @@ order = [".jpg$", ".gif$"]
   [[deployment.targets]]
   name="s3"
   # S3
-  URL = "s3://mikeyobrien-blog?region=us-west-2"
+  URL = "s3://mikeyobrien.com?region=us-west-2"
 
   [[deployment.matchers]]
   pattern = "^.+\\.(html|xml|json)$"

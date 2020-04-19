@@ -1,9 +1,9 @@
 +++
 title = "A New Start"
 date = 2018-05-31
-lastmod = 2020-04-11T17:29:49-05:00
+lastmod = 2020-04-12T16:08:15-05:00
 draft = false
-weight = 2003
+weight = 2006
 +++
 
 I've been meaning to start a blog for awhile now. In reality, I have a couple

@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main>
-  {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
-  {{ range sort $paginator.Pages "Params.date" "desc" }}
+  {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+  {{ range sort $pages "Params.date" "desc" }}
     {{ .Render "summary" }}
   {{ end }}
 </main>

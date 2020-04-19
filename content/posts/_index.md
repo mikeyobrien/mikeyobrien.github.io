@@ -1,10 +1,180 @@
 +++
 title = "Blog Posts"
 date = 2019-12-16
-lastmod = 2020-04-11T17:29:48-05:00
+lastmod = 2020-04-12T16:08:14-05:00
 draft = false
 weight = 1002
 +++
+
+## Using org-mode to blog {#using-org-mode-to-blog}
+
+As I've made my way deeper into the emacs rabbit hole I stumbled upon a package
+called ox-hugo that allows you to use .org files to manage content for a hugo
+blog. I've toyed with the idea of moving it over the past few months, only now
+getting the infrastructure in place to make it reality as this blog is now
+managed with ox-hugo. It's a great choice if you already are familiar with
+org-mode and emacs.
+
+Fortunately the package is included as an option with the base doom emacs
+configuration that I use. It is simple as adding,
+
+```lisp
+(org
+ +hugo)
+```
+
+to your init.el file and running the corresponding call to
+
+```sh
+.emacs.d/bin/doom sync
+```
+
+to install the ox-hugo package.
+
+I'll walk you through an example .org file that can be immediately used with the
+theme I created (addison) that this blog uses.
+
+
+### Configuration {#configuration}
+
+```org
+#+TITLE: Hugo
+#+HUGO_BASE_DIR: ./
+#+HUGO_SECTION: ./posts/
+
+#+hugo_weight: auto
+#+hugo_auto_set_lastmod: t
+#+options: author: nil
+
+* Homepage
+* Blog Posts
+* About
+```
+
+
+## <span class="org-todo todo TODO">TODO</span> Development Tools 2020 {#development-tools-2020}
+
+I enjoy trying out new tools and environments so what I use for coding changes
+constantly. I'd like to take sometime to catalog what I'm using currently as I'm
+certain it will likely change over the coming months. I'll summarize the main
+tools I use now and follow up with a detail overview of why these tools are
+currently in my toolbox.
+
+-   Text editor: Emacs
+-   Task management: Org-mode
+-   OS: MacOS + Linux
+-   Chat: Teams
+
+
+### Emacs {#emacs}
+
+Why emacs? Extensibility. Over the past couple years i've went from VS Code to
+VIM + TMux to Pycharm while dabbling here and there with emacs boilerplate
+configs (doom/spacemacs). While I couldn't find myself being productive enough
+to use it for my day job until recently I had always seen the potential. I was
+an org-mode convert about a year ago and in that time I slowly became more
+familiar with using emacs.
+
+
+### Org-Mode {#org-mode}
+
+The gateway drug into the emacs ecosystem. I've tried quitting in the past for
+other GTD management systems but I always come back. It's not the prettiest
+system but it just works. It's integration and extensibility are unmatched. My
+conversion to using emacs for more than just task management was due to the
+scope of this package alone.
+
+
+### OS {#os}
+
+MacOS during my day job and Linux at home. Particularly Arch. Like emacs I keep
+coming back. I have a personal macbook pro that I've recently purchased but as I
+continue to dive deeper into linux and the widespread support it not receives.
+It's hard to use anything else. I have also become more and more frustrated with
+the apple ecosystem. It's a fantastic OS for the average consumer but the
+restrictions being put in place to protect people are becoming more and more
+suffocating. I will still take MacOS as theres less tinkering to get a working
+enviroment done but comparatively to any linux distro it's a pain in the ass to
+customize and extend.
+
+
+## SD to Austin - 18 months later {#sd-to-austin-18-months-later}
+
+It's been a little over 18 months since we moved to Austin and this post about 6
+months overdue. I apologize as It's been quite busy since starting a new job
+shortly before the one year anniversary, but with the world on lockdown, I find
+myself with a little more time to devote to hobbies, back-logged projects, and
+self-improvement. Without rambling too much longer, I'd like to go over my
+thoughts on living in Austin over the past 18 months.
+
+
+### The People {#the-people}
+
+As I noted in the original post on moving to Austin from SD. People being very
+friendly has held true. I've continually noticed that people will go out of
+their way to help you. Something I didn't see quite as much in CA. Not to say
+people in CA are not friendly. I just felt it was less likely to have a random
+stranger offer help.
+
+I do feel for the Austinites that have lived here for decades as the city is a
+shell of what it was before. The sheer growth of people from all over the
+country has changed the cities characted. For better of for worse is up for
+debate. Also, more and more people are being affected from the increased CoL and
+its apparent with the growing homeless population. It is more troublesome than
+what I have experienced in San Diego and hope solutions are put in place to help
+those affected.
+
+
+### The Cost of Living {#the-cost-of-living}
+
+Yes, I raved about the cost of living before and it is still a lot cheaper but
+not as much as I would have expected. There are still expensive areas and
+restaurants in Austin and it's only getting more expensive. Housing prices are
+not much less than SD in desirable areas near the city center but significantly
+more so in the suburbs. I've benefited from not paying property taxes thus far and
+am not looking forward to doing so in the coming months when I move forward with
+purchasing property here. Most of the savings come in everyday expenses such as gas
+and groceries. There is also the added benefit of renting and not having state
+income tax. The extra cash pocketed has funded increased travel and savings
+which I'd take in a heartbeat over the so-called beach/weather tax in CA.
+
+
+### Job Market {#job-market}
+
+Being a software engineer, I don't think theres a better place to be. Sure there
+are other hot spots in SF, NY, Seattle, etc. but they are all very expensive CoL
+wise and I suspect don't have the growing city vibe that I have grown to love in
+Austin. I have first hand experienced the job market when I lost my job last
+year and was able to land a gig with a company that I am very happy to be a part
+of. I don't think I would have been exposed to as great opportunities had I
+stayed in San Diego. On top of it all I love that kolaches and breakfast tacos
+are regularly brought in for lunch.
+
+
+### Food {#food}
+
+Outstanding. I haven't found a shortage of any cuisine I am interested in. Sure
+there is better quality and diversity in food capitals such as NY, LA, or SF but
+there hasn't been an issue as nearly everything is here that would satisfy my
+cravings. With frequent trips out to SoCal to visit family there is nothing
+missed. Not to mention foods in Texas that can't be found elsewhere -- BBQ, TX
+style Tacos, kolaches, and a wide range of fusion foods.
+
+
+### Traffic {#traffic}
+
+It's not nearly as bad as other major cities from what I've experienced, but
+very bad for the city size. The infrastructure is just not their to support the
+booming population. I do not look forward to the day I have to commute.
+
+
+### TLDR {#tldr}
+
+Austin is a great city. It is struggling growing pains like increased
+traffic, homelessness, and an increasing CoL but the good has outweighed the bad
+and I look forward to planting some roots here and purchasing a home in the near
+future.
+
 
 ## Setting up PostgreSQL on MacOS {#setting-up-postgresql-on-macos}
 
@@ -33,13 +203,13 @@ createdb devdb
 
 If for whatever reason this db needs to be removed use,
 
-```nil
+```sh
 dropdb devdb
 ```
 
 Access the db we have just created,
 
-```nil
+```sh
 psql devdb
 ```
 
@@ -61,7 +231,7 @@ Type:  \copyright for distribution terms
 ```
 
 
-## Moving from San Diego to Austin {#moving-from-san-diego-to-austin}
+### Moving from San Diego to Austin {#moving-from-san-diego-to-austin}
 
 A couple of months ago an opportunity opened up at work to move to Austin,
 Texas. I toyed with the idea of making the move but never took it seriously.
@@ -919,6 +1089,9 @@ This concludes the basic setup for a MEVN stack project.
 
 
 ## <span class="org-todo todo TODO">TODO</span> Thoughts on current state of affairs {#thoughts-on-current-state-of-affairs}
+
+
+## <span class="org-todo todo TODO">TODO</span> Keyboard {#keyboard}
 
 [//]: # "Exported with love from a post written in Org mode"
 [//]: # "- https://github.com/kaushalmodi/ox-hugo"

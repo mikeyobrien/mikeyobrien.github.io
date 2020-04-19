@@ -1,9 +1,9 @@
 +++
 title = "Creating a MEVN stack boilerplate"
 date = 2018-06-12
-lastmod = 2020-04-11T17:29:50-05:00
+lastmod = 2020-04-12T16:08:15-05:00
 draft = false
-weight = 2004
+weight = 2007
 +++
 
 This post will cover the basic steps needed to set up a project using the MEVN
