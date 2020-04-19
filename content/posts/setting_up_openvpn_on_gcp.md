@@ -1,7 +1,7 @@
 +++
 title = "Setting up OpenVPN on GCP"
 date = 2018-10-08
-lastmod = 2020-04-12T16:08:15-05:00
+lastmod = 2020-04-19T18:00:29-05:00
 draft = false
 weight = 2005
 +++
@@ -12,7 +12,6 @@ instance to ensure my home IP is not being captured by bad actors.
 
 If you don't use GCP and would like to use this as a guide for another cloud
 provider feel free, as the same general steps apply.
-
 
 ## Compute Instance Configuration {#compute-instance-configuration}
 
@@ -27,17 +26,16 @@ Lastly, we need to setup the firewall rules for openvpn traffic. Select firewall
 rules from the side tab, then click select 'Create Firewall Rule'. Name the
 first rule openvpn-ingress. Change the following,
 
-\#+BEGIN\_SRC
+\#+BEGIN_SRC
 Target tags: openvpn Source filter: 0.0.0.0/0 (if you will be accessing openvpn
 from a static address, for example 1.2.3.4, you can change the filter to
 (1.2.3.4/32) for added security.) Protocols and ports: udp 1194 (you can
-customize this during openvpn setup or use the default) #+END\_SRC
+customize this during openvpn setup or use the default) #+END_SRC
 
 Change the same settings for an openvpn-egress rule, but change the direction of
 traffic to egress.
 
 That should be all the setup from the GCP Console.
-
 
 ## Configuring the compute instance. {#configuring-the-compute-instance-dot}
 
@@ -113,7 +111,6 @@ Customize encryption settings? [y/n]: n
 Okay, that was all I needed. We are ready to setup your OpenVPN server now. You
 will be able to generate a client at the end of the installation. Press any key
 to continue...
-12345678910111213141516171819202122232425262728293031323334353637383940414243
 ```
 
 Continue with the installation.
@@ -125,11 +122,13 @@ the server.
 Lastly, the instance needs to be configured to forward ipv4 packets.
 
 Edit /etc/sysctl.conf and uncommment,
-\#+BEGIN\_SRC conf
--#net.ipv4.ip\_forward=1 net.ipv4.ip\_forward=1 #+END\_SRC
+
+```conf
+-#net.ipv4.ip_forward=1
++net.ipv4.ip_forward=1
+```
 
 The OpenVPN server should now be up and running.
-
 
 ## Client Setup {#client-setup}
 

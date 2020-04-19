@@ -1,7 +1,7 @@
 +++
 title = "SD to Austin - 18 months later"
 date = 2020-04-12
-lastmod = 2020-04-12T16:08:14-05:00
+lastmod = 2020-04-19T18:00:24-05:00
 draft = false
 weight = 2003
 +++
@@ -12,7 +12,6 @@ shortly before the one year anniversary, but with the world on lockdown, I find
 myself with a little more time to devote to hobbies, back-logged projects, and
 self-improvement. Without rambling too much longer, I'd like to go over my
 thoughts on living in Austin over the past 18 months.
-
 
 ## The People {#the-people}
 
@@ -30,7 +29,6 @@ its apparent with the growing homeless population. It is more troublesome than
 what I have experienced in San Diego and hope solutions are put in place to help
 those affected.
 
-
 ## The Cost of Living {#the-cost-of-living}
 
 Yes, I raved about the cost of living before and it is still a lot cheaper but
@@ -44,7 +42,6 @@ and groceries. There is also the added benefit of renting and not having state
 income tax. The extra cash pocketed has funded increased travel and savings
 which I'd take in a heartbeat over the so-called beach/weather tax in CA.
 
-
 ## Job Market {#job-market}
 
 Being a software engineer, I don't think theres a better place to be. Sure there
@@ -56,7 +53,6 @@ of. I don't think I would have been exposed to as great opportunities had I
 stayed in San Diego. On top of it all I love that kolaches and breakfast tacos
 are regularly brought in for lunch.
 
-
 ## Food {#food}
 
 Outstanding. I haven't found a shortage of any cuisine I am interested in. Sure
@@ -66,13 +62,11 @@ cravings. With frequent trips out to SoCal to visit family there is nothing
 missed. Not to mention foods in Texas that can't be found elsewhere -- BBQ, TX
 style Tacos, kolaches, and a wide range of fusion foods.
 
-
 ## Traffic {#traffic}
 
 It's not nearly as bad as other major cities from what I've experienced, but
 very bad for the city size. The infrastructure is just not their to support the
 booming population. I do not look forward to the day I have to commute.
-
 
 ## TLDR {#tldr}
 

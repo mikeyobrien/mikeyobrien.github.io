@@ -1,7 +1,7 @@
 +++
 title = "Moving from San Diego to Austin"
 date = 2018-10-09
-lastmod = 2020-04-12T16:08:15-05:00
+lastmod = 2020-04-19T18:00:27-05:00
 draft = false
 weight = 3001
 +++

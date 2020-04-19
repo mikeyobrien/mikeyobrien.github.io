@@ -1,7 +1,7 @@
 +++
 title = "Development Tools 2020"
 date = 2019-12-16
-lastmod = 2020-04-12T16:08:14-05:00
+lastmod = 2020-04-19T18:00:23-05:00
 draft = true
 weight = 2002
 +++
@@ -12,11 +12,10 @@ certain it will likely change over the coming months. I'll summarize the main
 tools I use now and follow up with a detail overview of why these tools are
 currently in my toolbox.
 
--   Text editor: Emacs
--   Task management: Org-mode
--   OS: MacOS + Linux
--   Chat: Teams
-
+- Text editor: Emacs
+- Task management: Org-mode
+- OS: MacOS + Linux
+- Chat: Teams
 
 ## Emacs {#emacs}
 
@@ -27,7 +26,6 @@ to use it for my day job until recently I had always seen the potential. I was
 an org-mode convert about a year ago and in that time I slowly became more
 familiar with using emacs.
 
-
 ## Org-Mode {#org-mode}
 
 The gateway drug into the emacs ecosystem. I've tried quitting in the past for
@@ -35,7 +33,6 @@ other GTD management systems but I always come back. It's not the prettiest
 system but it just works. It's integration and extensibility are unmatched. My
 conversion to using emacs for more than just task management was due to the
 scope of this package alone.
-
 
 ## OS {#os}
 

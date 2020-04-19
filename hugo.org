@@ -17,20 +17,20 @@ This is the home of my blog!
 :EXPORT_DATE: 2019-12-16
 :EXPORT_FILE_NAME: _index
 :END:
-** Using org-mode to blog
+** Using ox-hugo to manage content
 :PROPERTIES:
-:EXPORT_FILE_NAME: using-org-mode-to-blog
-:EXPORT_DATE: 2020-04-12
+:EXPORT_FILE_NAME: using-ox-hugo-to-manage-content
+:EXPORT_DATE: 2020-04-19
 :END:
 As I've made my way deeper into the emacs rabbit hole I stumbled upon a package
-called ox-hugo that allows you to use .org files to manage content for a hugo
-blog. I've toyed with the idea of moving it over the past few months, only now
-getting the infrastructure in place to make it reality as this blog is now
-managed with ox-hugo. It's a great choice if you already are familiar with
+called [[https://ox-hugo.scripter.co][ox-hugo]] that allows you to use .org files to manage content that can then
+be deployed with the static site generator, [[https://gohugo.io/][hugo]]. I've toyed with the idea of
+moving it over the past few months, only now getting the configuration in place
+to make it a reality as im now managing all content ox-hugo. In the brief time
+I've used it I'm confident in recommending it if you already are familiar with
 org-mode and emacs.
 
-Fortunately the package is included as an option with [[https://github.com/hlissner/doom-emacs][doom-emacs]].
-It is simple as adding,
+Fortunately the package is included as an option with [[https://github.com/hlissner/doom-emacs][doom-emacs]] and is simple as adding,
 #+BEGIN_SRC lisp
 (org
  +hugo)
@@ -40,10 +40,8 @@ to your init.el file and running the corresponding call to install the ox-hugo p
 .emacs.d/bin/doom sync
 #+END_SRC
 
-I'll walk you through an example .org file that can be immediately used with the
-theme I created (addison) that this blog uses.
-
-*** Configuration
+Here is an example .org file that can be immediately used with a simple theme I
+put together to get a better understanding of hugo ([[https://github.com/mikeyobrien/hugo-theme-addison]])
 #+BEGIN_SRC org
 ,#+TITLE: Hugo
 ,#+HUGO_BASE_DIR: ./
@@ -51,12 +49,54 @@ theme I created (addison) that this blog uses.
 
 ,#+hugo_weight: auto
 ,#+hugo_auto_set_lastmod: t
-,#+options: author: nil
+,#+options: author:nil
 
 ,* Homepage
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:
+:EXPORT_FILE_NAME: _index
+:END:
+This is the home of my blog!
 ,* Blog Posts
+:PROPERTIES:
+:EXPORT_DATE: 2019-12-16
+:EXPORT_FILE_NAME: _index
+:END:
+,** Today Was A Good Day
+:PROPERTIES:
+:EXPORT_DATE: 2018-06-12
+:EXPORT_FILE_NAME: today_was_a_good_day
+:END:
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget facilisis mi,
+  ut efficitur libero. In hac habitasse platea dictumst. Pellentesque habitant
+  morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at
+  iaculis sem, convallis elementum ipsum. Donec aliquam ex quis orci ullamcorper
+  ultricies. In at efficitur libero. Fusce vitae lorem ac neque bibendum vehicula.
+  Proin viverra gravida libero sit amet dapibus. Nulla tempor neque quis nibh
+  euismod commodo nec non augue. Suspendisse sed accumsan risus. Curabitur
+  imperdiet ex quis eros scelerisque, non blandit augue condimentum.
+,** TODO Tomorrow's Thoughts
+  Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis
+  facilisis, est dui fermentum leo, quis tempor ligula erat quis odio. Nunc
+  porta vulputate tellus. Nunc rutrum turpis sed pede. Sed bibendum. Aliquam
+  posuere. Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada
+  massa, quis varius mi purus non odio. Pellentesque condimentum, magna ut
+  suscipit hendrerit, ipsum augue ornare nulla, non luctus diam neque sit amet
+  urna. Curabitur vulputate vestibulum lorem. Fusce sagittis, libero non
+  molestie mollis, magna orci ultrices dolor, at vulputate neque nulla lacinia
+  eros. Sed id ligula quis est convallis tempor. Curabitur lacinia pulvinar
+  nibh. Nam a sapien.
 ,* About
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_SECTION: about
+:END:
+Tell the internet about yourself here.
 #+END_SRC
+
+Place this .org file at the root of your hugo website directory.
+Source for this blog can be found at [[https://github.com/mikeyobrien/blog]].
+
 ** TODO Development Tools 2020
 :PROPERTIES:
 :EXPORT_FILE_NAME: 2020_development_tools
@@ -427,7 +467,6 @@ Customize encryption settings? [y/n]: n
 Okay, that was all I needed. We are ready to setup your OpenVPN server now. You
 will be able to generate a client at the end of the installation. Press any key
 to continue...
-12345678910111213141516171819202122232425262728293031323334353637383940414243
 #+END_SRC
 
 Continue with the installation.
@@ -440,7 +479,9 @@ Lastly, the instance needs to be configured to forward ipv4 packets.
 
 Edit /etc/sysctl.conf and uncommment,
 #+BEGIN_SRC conf
--#net.ipv4.ip_forward=1 net.ipv4.ip_forward=1 #+END_SRC
+-#net.ipv4.ip_forward=1
++net.ipv4.ip_forward=1
+#+END_SRC
 
 The OpenVPN server should now be up and running.
 *** Client Setup
@@ -999,8 +1040,3 @@ This concludes the basic setup for a MEVN stack project.
 Software Engineer in Austin, TX
 Born and raised in San Diego, California. If I'm not coding, I'm geeking out on
 new tech, reading, or playing golf.
-* Footnotes
-* COMMENT Local Variables                                           :ARCHIVE:
-# Local Variables:
-# org-hugo-footer: "\n\n[//]: # \"Exported with love from a post written in Org mode\"\n[//]: # \"- https://github.com/kaushalmodi/ox-hugo\""
-# End:

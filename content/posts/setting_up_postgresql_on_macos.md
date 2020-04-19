@@ -1,7 +1,7 @@
 +++
 title = "Setting up PostgreSQL on MacOS"
 date = 2019-02-18
-lastmod = 2020-04-12T16:08:14-05:00
+lastmod = 2020-04-19T18:00:26-05:00
 draft = false
 weight = 2004
 +++
@@ -58,7 +58,6 @@ Type:  \copyright for distribution terms
        \q to quit
 ```
 
-
 ## Moving from San Diego to Austin {#moving-from-san-diego-to-austin}
 
 A couple of months ago an opportunity opened up at work to move to Austin,
@@ -71,7 +70,6 @@ after a hectic two months of moving halfway across the country, I'm finally
 starting to settle in. Here are some things I've learned leading up to the move
 and what I've learned from a little over a month in Austin.
 
-
 ## Start as early as possible {#start-as-early-as-possible}
 
 Moving across the country with one month notice is certainly possible but I'd
@@ -82,7 +80,6 @@ for us. If not we would have been rushed into picking a place to live. Spreading
 out the cadence at which you pack, donate, and sell items relieves a lot of the
 pressure of the move. Make the months prior as easy possible by starting as soon
 as you can.
-
 
 ## Save money by shipping {#save-money-by-shipping}
 
@@ -102,7 +99,6 @@ buying new furniture to after the move. This option may not work for everyone
 but is worth taking into account if you're willing to part with most of your
 belongings and start over.
 
-
 ## Austin feels small {#austin-feels-small}
 
 This one is subjective. Coming from San Diego and spending a significant time in
@@ -112,7 +108,6 @@ from Downtown San Diego yet we're still considered to be in the city of San
 Diego. Everything feel's closer then I am accustomed to. This doesn't mean your
 commute will be short though. Austin is supposedly notorious for its traffic.
 Although nothing out of the ordinary compared to LA or San Francisco.
-
 
 ## Texans are nice {#texans-are-nice}
 
@@ -125,14 +120,12 @@ choice of breakfast tacos and asked about our plans for the day. I promised I'm
 not trying to be rude when I stare at you with a confused smile I just don't
 know how to react yet.
 
-
 ## It seems as techie as they say {#it-seems-as-techie-as-they-say}
 
 I don't have a large sample size to build on but five of the six people on our
 TopGolf league team works for tech companies. It isn't shocking to see large
 tech company offices as you drive through Austin. This is a stark contrast to
 what I'd experienced in Southern California.
-
 
 ## Californians are everywhere {#californians-are-everywhere}
 
@@ -144,7 +137,6 @@ representing their hometown teams. A recent post on culturemap estimated from
 prior to Austin being named "Best City to Live" two years in a row by U.S. News
 and World Report. It's hard to imagine the influx to stop as long as
 California's cost of living continues to rise. We are sorry.
-
 
 ## The food has been outstanding {#the-food-has-been-outstanding}
 
@@ -160,7 +152,6 @@ Shack, Whataburger, In-n-out, and Austin's very own P Terry's (which was a
 pleasant surprise). And from my understanding, this is only the tip of the
 iceberg. I'm looking forward to eating my way through Austin as the months roll
 by.
-
 
 ## Your money goes a long way relative to California {#your-money-goes-a-long-way-relative-to-california}
 
@@ -179,7 +170,6 @@ prices in some neighborhoods reflect those in California, some residents are
 being forced out of neighborhoods they've lived in for generations. It's
 unfortunate. Hopefully, it doesn't snowball into the issues we are seeing in the
 bay area.
-
 
 ## Conclusion {#conclusion}
 

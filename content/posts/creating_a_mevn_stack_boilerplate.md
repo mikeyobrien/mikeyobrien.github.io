@@ -1,7 +1,7 @@
 +++
 title = "Creating a MEVN stack boilerplate"
 date = 2018-06-12
-lastmod = 2020-04-12T16:08:15-05:00
+lastmod = 2020-04-19T18:00:32-05:00
 draft = false
 weight = 2007
 +++
@@ -12,12 +12,11 @@ tutorial on creating a web application using the MEVN stack you may want to look
 elsewhere. I'll only be covering the basic project structure, packages, and
 tools necessary to get started.
 
-
 ## Prerequisites {#prerequisites}
 
--   Basic understanding of javascript
--   Commandline familiarity
--   Familiarity with NPM
+- Basic understanding of javascript
+- Commandline familiarity
+- Familiarity with NPM
 
 To be begin we first need to insure that node is installed on the machine. We
 will be using the vue-cli tool to generate the project. To check that it is
@@ -79,7 +78,6 @@ project/
 └── package.json
 ```
 
-
 ## Backend Configuration {#backend-configuration}
 
 We're now ready to setup our express backend and link it to mongodb using the
@@ -97,11 +95,11 @@ application
 $ npm install --save express cors morgan body-parser mongoose
 ```
 
--   express is used for handling http requests and responses.
--   cors allows cross-origin resource sharing.
--   morgan is an express middleware for logging.
--   body-parser will parse incoming request bodies before hitting handlers.
--   mongoose will be used to connect to our mongo db.
+- express is used for handling http requests and responses.
+- cors allows cross-origin resource sharing.
+- morgan is an express middleware for logging.
+- body-parser will parse incoming request bodies before hitting handlers.
+- mongoose will be used to connect to our mongo db.
 
 In the server directory, make a new directory src to hold all our backend source code, and create the app.js file,
 
@@ -118,36 +116,36 @@ $ mkdir models
 Edit the new app.js file to contain all our installed packages,
 
 ```javascript
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const morgan = require('morgan')
-var mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
+var mongoose = require("mongoose");
 
 // Express configuration
-const app = express()
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
-app.listen(process.env.PORT || 8081)
+const app = express();
+app.use(morgan("combined"));
+app.use(bodyParser.json());
+app.use(cors());
+app.listen(process.env.PORT || 8081);
 
 // Mongoose configuration
-mongoose.connect('mongodb://localhost:27017/project');
+mongoose.connect("mongodb://localhost:27017/project");
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback){
+db.once("open", function(callback) {
   console.log("Connection Succeeded");
 });
 
 // Test handler
-app.get('/test', (req, res) => {
-  res.send(
-    [{
-      serviceName: 'test',
+app.get("/test", (req, res) => {
+  res.send([
+    {
+      serviceName: "test",
       isRunning: true
-    }]
-  )
-})
+    }
+  ]);
+});
 ```
 
 Let's run the application,
@@ -198,18 +196,17 @@ And direct your browser to <http://localhost:8081>. Update the test function in 
 
 ```javascript
 // Test handler
-app.get('/test', (req, res) => {
-  res.send(
-    [{
-      serviceName: 'test',
+app.get("/test", (req, res) => {
+  res.send([
+    {
+      serviceName: "test",
       isRunning: false
-    }]
-  )
-})
+    }
+  ]);
+});
 ```
 
 Save the file and refresh your browser. You should now see the updated test handler. Our backend is now set up for basic testing.
-
 
 ## Frontend Configuration {#frontend-configuration}
 
@@ -242,7 +239,6 @@ Great! Everything seems to be working. Let's begin by cleaning up some of the bo
 $ sudo rm -rf src\*
 ```
 
-
 ### main.js {#main-dot-js}
 
 Create the entry-point to our vue application under src.
@@ -256,21 +252,20 @@ Edit the file to contain,
 ```jsx
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from "vue";
+import App from "./App";
+import router from "./router";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   components: { App },
-  template: '<App/>'
-})
+  template: "<App/>"
+});
 ```
-
 
 ### Root Vue {#root-vue}
 
@@ -296,7 +291,6 @@ export default {
 </script>
 ```
 
-
 ### Vue Router {#vue-router}
 
 Create the router directory,
@@ -314,24 +308,23 @@ $ touch src/router/index.js
 Edit the file to contain,
 
 ```jsx
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/Home'
+import Vue from "vue";
+import Router from "vue-router";
+import HelloWorld from "@/components/Home";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'Home',
+      path: "/",
+      name: "Home",
       component: Home
     }
   ]
-})
+});
 ```
-
 
 ### Services directory {#services-directory}
 
@@ -344,13 +337,13 @@ $ mkdir src/services
 Create a file called Api.js and add the following to the file,
 
 ```jsx
-import axios from 'axios'
+import axios from "axios";
 
-export default() => {
+export default () => {
   return axios.create({
     baseURL: `http://localhost:8081`
-  })
-}
+  });
+};
 ```
 
 In the same file let's add another file TestService.js that will make requests to our backend.
@@ -358,15 +351,14 @@ In the same file let's add another file TestService.js that will make requests t
 Add to the file,
 
 ```jsx
-import Api from '@/services/Api'
+import Api from "@/services/Api";
 
 export default {
-  testStatus () {
-    return Api().get('test')
+  testStatus() {
+    return Api().get("test");
   }
-}
+};
 ```
-
 
 ### Home Component {#home-component}
 
@@ -401,7 +393,6 @@ export default {
       status: []
 ```
 
-
 ### Assets {#assets}
 
 Finally create a directory to hold any future assets.
@@ -417,7 +408,6 @@ Check to see if everything was created properly at <http://localhost:8081>
 
 If it looks similar to the picture above our frontend and backend our now connected!
 
-
 ## Deploying the application {#deploying-the-application}
 
 Now that the frontend and backend are running successfully on the local machine,
@@ -428,12 +418,10 @@ The rest of the post assumes you have a remote server to deploy the application
 to using any hosting provider of your choice (aws, google cloud, azure,
 digitalocean, etc.)
 
-
 ### MongoDB {#mongodb}
 
 SSH into the remote server and follow the previous instructions used to
 provision our local machine.
-
 
 ### nginx {#nginx}
 
@@ -445,7 +433,6 @@ code and www.[your-domain-name].com/api to our express app running on port 8081.
 
 Before we begin configuring the nginx to reverse proxy incoming requests we'll
 need to move the code on our local machine to the remote server
-
 
 ### Push project to the remote server {#push-project-to-the-remote-server}
 
@@ -476,7 +463,6 @@ $ npm run build
 When the build completes, you should see a new folder under the root project
 directory called dist, this is the folder nginx should serve when a client makes
 a request.
-
 
 ### Host Server Configuration {#host-server-configuration}
 

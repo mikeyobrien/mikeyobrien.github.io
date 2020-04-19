@@ -1,41 +1,36 @@
 +++
 title = "Blog Posts"
 date = 2019-12-16
-lastmod = 2020-04-12T16:08:14-05:00
+lastmod = 2020-04-19T18:00:20-05:00
 draft = false
 weight = 1002
 +++
 
-## Using org-mode to blog {#using-org-mode-to-blog}
+## Using ox-hugo to manage content {#using-ox-hugo-to-manage-content}
 
 As I've made my way deeper into the emacs rabbit hole I stumbled upon a package
-called ox-hugo that allows you to use .org files to manage content for a hugo
-blog. I've toyed with the idea of moving it over the past few months, only now
-getting the infrastructure in place to make it reality as this blog is now
-managed with ox-hugo. It's a great choice if you already are familiar with
+called [ox-hugo](https://ox-hugo.scripter.co) that allows you to use .org files to manage content that can then
+be deployed with the static site generator, [hugo](https://gohugo.io/). I've toyed with the idea of
+moving it over the past few months, only now getting the configuration in place
+to make it a reality as im now managing all content ox-hugo. In the brief time
+I've used it I'm confident in recommending it if you already are familiar with
 org-mode and emacs.
 
-Fortunately the package is included as an option with the base doom emacs
-configuration that I use. It is simple as adding,
+Fortunately the package is included as an option with [doom-emacs](https://github.com/hlissner/doom-emacs) and is simple as adding,
 
 ```lisp
 (org
  +hugo)
 ```
 
-to your init.el file and running the corresponding call to
+to your init.el file and running the corresponding call to install the ox-hugo package.
 
 ```sh
 .emacs.d/bin/doom sync
 ```
 
-to install the ox-hugo package.
-
-I'll walk you through an example .org file that can be immediately used with the
-theme I created (addison) that this blog uses.
-
-
-### Configuration {#configuration}
+Here is an example .org file that can be immediately used with a simple theme I
+put together to get a better understanding of hugo (<https://github.com/mikeyobrien/hugo-theme-addison>)
 
 ```org
 #+TITLE: Hugo
@@ -44,13 +39,53 @@ theme I created (addison) that this blog uses.
 
 #+hugo_weight: auto
 #+hugo_auto_set_lastmod: t
-#+options: author: nil
+#+options: author:nil
 
 * Homepage
+:PROPERTIES:
+:EXPORT_HUGO_SECTION:
+:EXPORT_FILE_NAME: _index
+:END:
+This is the home of my blog!
 * Blog Posts
+:PROPERTIES:
+:EXPORT_DATE: 2019-12-16
+:EXPORT_FILE_NAME: _index
+:END:
+** Today Was A Good Day
+:PROPERTIES:
+:EXPORT_DATE: 2018-06-12
+:EXPORT_FILE_NAME: today_was_a_good_day
+:END:
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget facilisis mi,
+  ut efficitur libero. In hac habitasse platea dictumst. Pellentesque habitant
+  morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec at
+  iaculis sem, convallis elementum ipsum. Donec aliquam ex quis orci ullamcorper
+  ultricies. In at efficitur libero. Fusce vitae lorem ac neque bibendum vehicula.
+  Proin viverra gravida libero sit amet dapibus. Nulla tempor neque quis nibh
+  euismod commodo nec non augue. Suspendisse sed accumsan risus. Curabitur
+  imperdiet ex quis eros scelerisque, non blandit augue condimentum.
+** TODO Tomorrow's Thoughts
+  Nullam eu ante vel est convallis dignissim. Fusce suscipit, wisi nec facilisis
+  facilisis, est dui fermentum leo, quis tempor ligula erat quis odio. Nunc
+  porta vulputate tellus. Nunc rutrum turpis sed pede. Sed bibendum. Aliquam
+  posuere. Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada
+  massa, quis varius mi purus non odio. Pellentesque condimentum, magna ut
+  suscipit hendrerit, ipsum augue ornare nulla, non luctus diam neque sit amet
+  urna. Curabitur vulputate vestibulum lorem. Fusce sagittis, libero non
+  molestie mollis, magna orci ultrices dolor, at vulputate neque nulla lacinia
+  eros. Sed id ligula quis est convallis tempor. Curabitur lacinia pulvinar
+  nibh. Nam a sapien.
 * About
+:PROPERTIES:
+:EXPORT_FILE_NAME: _index
+:EXPORT_HUGO_SECTION: about
+:END:
+Tell the internet about yourself here.
 ```
 
+Place this .org file at the root of your hugo website directory.
+Source for this blog can be found at <https://github.com/mikeyobrien/blog>.
 
 ## <span class="org-todo todo TODO">TODO</span> Development Tools 2020 {#development-tools-2020}
 
@@ -60,11 +95,10 @@ certain it will likely change over the coming months. I'll summarize the main
 tools I use now and follow up with a detail overview of why these tools are
 currently in my toolbox.
 
--   Text editor: Emacs
--   Task management: Org-mode
--   OS: MacOS + Linux
--   Chat: Teams
-
+- Text editor: Emacs
+- Task management: Org-mode
+- OS: MacOS + Linux
+- Chat: Teams
 
 ### Emacs {#emacs}
 
@@ -75,7 +109,6 @@ to use it for my day job until recently I had always seen the potential. I was
 an org-mode convert about a year ago and in that time I slowly became more
 familiar with using emacs.
 
-
 ### Org-Mode {#org-mode}
 
 The gateway drug into the emacs ecosystem. I've tried quitting in the past for
@@ -83,7 +116,6 @@ other GTD management systems but I always come back. It's not the prettiest
 system but it just works. It's integration and extensibility are unmatched. My
 conversion to using emacs for more than just task management was due to the
 scope of this package alone.
-
 
 ### OS {#os}
 
@@ -97,7 +129,6 @@ suffocating. I will still take MacOS as theres less tinkering to get a working
 enviroment done but comparatively to any linux distro it's a pain in the ass to
 customize and extend.
 
-
 ## SD to Austin - 18 months later {#sd-to-austin-18-months-later}
 
 It's been a little over 18 months since we moved to Austin and this post about 6
@@ -106,7 +137,6 @@ shortly before the one year anniversary, but with the world on lockdown, I find
 myself with a little more time to devote to hobbies, back-logged projects, and
 self-improvement. Without rambling too much longer, I'd like to go over my
 thoughts on living in Austin over the past 18 months.
-
 
 ### The People {#the-people}
 
@@ -124,7 +154,6 @@ its apparent with the growing homeless population. It is more troublesome than
 what I have experienced in San Diego and hope solutions are put in place to help
 those affected.
 
-
 ### The Cost of Living {#the-cost-of-living}
 
 Yes, I raved about the cost of living before and it is still a lot cheaper but
@@ -138,7 +167,6 @@ and groceries. There is also the added benefit of renting and not having state
 income tax. The extra cash pocketed has funded increased travel and savings
 which I'd take in a heartbeat over the so-called beach/weather tax in CA.
 
-
 ### Job Market {#job-market}
 
 Being a software engineer, I don't think theres a better place to be. Sure there
@@ -150,7 +178,6 @@ of. I don't think I would have been exposed to as great opportunities had I
 stayed in San Diego. On top of it all I love that kolaches and breakfast tacos
 are regularly brought in for lunch.
 
-
 ### Food {#food}
 
 Outstanding. I haven't found a shortage of any cuisine I am interested in. Sure
@@ -160,13 +187,11 @@ cravings. With frequent trips out to SoCal to visit family there is nothing
 missed. Not to mention foods in Texas that can't be found elsewhere -- BBQ, TX
 style Tacos, kolaches, and a wide range of fusion foods.
 
-
 ### Traffic {#traffic}
 
 It's not nearly as bad as other major cities from what I've experienced, but
 very bad for the city size. The infrastructure is just not their to support the
 booming population. I do not look forward to the day I have to commute.
-
 
 ### TLDR {#tldr}
 
@@ -174,7 +199,6 @@ Austin is a great city. It is struggling growing pains like increased
 traffic, homelessness, and an increasing CoL but the good has outweighed the bad
 and I look forward to planting some roots here and purchasing a home in the near
 future.
-
 
 ## Setting up PostgreSQL on MacOS {#setting-up-postgresql-on-macos}
 
@@ -230,7 +254,6 @@ Type:  \copyright for distribution terms
        \q to quit
 ```
 
-
 ### Moving from San Diego to Austin {#moving-from-san-diego-to-austin}
 
 A couple of months ago an opportunity opened up at work to move to Austin,
@@ -243,7 +266,6 @@ after a hectic two months of moving halfway across the country, I'm finally
 starting to settle in. Here are some things I've learned leading up to the move
 and what I've learned from a little over a month in Austin.
 
-
 ### Start as early as possible {#start-as-early-as-possible}
 
 Moving across the country with one month notice is certainly possible but I'd
@@ -254,7 +276,6 @@ for us. If not we would have been rushed into picking a place to live. Spreading
 out the cadence at which you pack, donate, and sell items relieves a lot of the
 pressure of the move. Make the months prior as easy possible by starting as soon
 as you can.
-
 
 ### Save money by shipping {#save-money-by-shipping}
 
@@ -274,7 +295,6 @@ buying new furniture to after the move. This option may not work for everyone
 but is worth taking into account if you're willing to part with most of your
 belongings and start over.
 
-
 ### Austin feels small {#austin-feels-small}
 
 This one is subjective. Coming from San Diego and spending a significant time in
@@ -284,7 +304,6 @@ from Downtown San Diego yet we're still considered to be in the city of San
 Diego. Everything feel's closer then I am accustomed to. This doesn't mean your
 commute will be short though. Austin is supposedly notorious for its traffic.
 Although nothing out of the ordinary compared to LA or San Francisco.
-
 
 ### Texans are nice {#texans-are-nice}
 
@@ -297,14 +316,12 @@ choice of breakfast tacos and asked about our plans for the day. I promised I'm
 not trying to be rude when I stare at you with a confused smile I just don't
 know how to react yet.
 
-
 ### It seems as techie as they say {#it-seems-as-techie-as-they-say}
 
 I don't have a large sample size to build on but five of the six people on our
 TopGolf league team works for tech companies. It isn't shocking to see large
 tech company offices as you drive through Austin. This is a stark contrast to
 what I'd experienced in Southern California.
-
 
 ### Californians are everywhere {#californians-are-everywhere}
 
@@ -316,7 +333,6 @@ representing their hometown teams. A recent post on culturemap estimated from
 prior to Austin being named "Best City to Live" two years in a row by U.S. News
 and World Report. It's hard to imagine the influx to stop as long as
 California's cost of living continues to rise. We are sorry.
-
 
 ### The food has been outstanding {#the-food-has-been-outstanding}
 
@@ -332,7 +348,6 @@ Shack, Whataburger, In-n-out, and Austin's very own P Terry's (which was a
 pleasant surprise). And from my understanding, this is only the tip of the
 iceberg. I'm looking forward to eating my way through Austin as the months roll
 by.
-
 
 ### Your money goes a long way relative to California {#your-money-goes-a-long-way-relative-to-california}
 
@@ -352,7 +367,6 @@ being forced out of neighborhoods they've lived in for generations. It's
 unfortunate. Hopefully, it doesn't snowball into the issues we are seeing in the
 bay area.
 
-
 ### Conclusion {#conclusion}
 
 It has only been a month but so far Austin has exceeded all expectations and I
@@ -360,7 +374,6 @@ look forward to experiencing what more this city has to offer. It will be
 interesting to see how my opinion of Austin changes over the course of a year
 and will follow up on this post then. If you've moved to Austin from another
 state, I'd love to hear your thoughts.
-
 
 ## Setting up OpenVPN on GCP {#setting-up-openvpn-on-gcp}
 
@@ -370,7 +383,6 @@ instance to ensure my home IP is not being captured by bad actors.
 
 If you don't use GCP and would like to use this as a guide for another cloud
 provider feel free, as the same general steps apply.
-
 
 ### Compute Instance Configuration {#compute-instance-configuration}
 
@@ -385,17 +397,16 @@ Lastly, we need to setup the firewall rules for openvpn traffic. Select firewall
 rules from the side tab, then click select 'Create Firewall Rule'. Name the
 first rule openvpn-ingress. Change the following,
 
-\#+BEGIN\_SRC
+\#+BEGIN_SRC
 Target tags: openvpn Source filter: 0.0.0.0/0 (if you will be accessing openvpn
 from a static address, for example 1.2.3.4, you can change the filter to
 (1.2.3.4/32) for added security.) Protocols and ports: udp 1194 (you can
-customize this during openvpn setup or use the default) #+END\_SRC
+customize this during openvpn setup or use the default) #+END_SRC
 
 Change the same settings for an openvpn-egress rule, but change the direction of
 traffic to egress.
 
 That should be all the setup from the GCP Console.
-
 
 ### Configuring the compute instance. {#configuring-the-compute-instance-dot}
 
@@ -471,7 +482,6 @@ Customize encryption settings? [y/n]: n
 Okay, that was all I needed. We are ready to setup your OpenVPN server now. You
 will be able to generate a client at the end of the installation. Press any key
 to continue...
-12345678910111213141516171819202122232425262728293031323334353637383940414243
 ```
 
 Continue with the installation.
@@ -483,11 +493,13 @@ the server.
 Lastly, the instance needs to be configured to forward ipv4 packets.
 
 Edit /etc/sysctl.conf and uncommment,
-\#+BEGIN\_SRC conf
--#net.ipv4.ip\_forward=1 net.ipv4.ip\_forward=1 #+END\_SRC
+
+```conf
+-#net.ipv4.ip_forward=1
++net.ipv4.ip_forward=1
+```
 
 The OpenVPN server should now be up and running.
-
 
 ### Client Setup {#client-setup}
 
@@ -500,7 +512,6 @@ gcloud compute scp <username>@<instance>:~/<clientname>.ovpn .
 Import that config into your openvpn client and connect. If everything
 configured correctly you should see the ip of your compute instance when
 searching "whats my ip" on google.
-
 
 ## A New Start {#a-new-start}
 
@@ -523,7 +534,6 @@ stories get grouped in. Looking forward to having anyone along for the journey -
 if not, future me, here's to recording what I've learned and what I've
 experienced. I know reflecting on it will be more than worth it.
 
-
 ## Creating a MEVN stack boilerplate {#creating-a-mevn-stack-boilerplate}
 
 This post will cover the basic steps needed to set up a project using the MEVN
@@ -532,12 +542,11 @@ tutorial on creating a web application using the MEVN stack you may want to look
 elsewhere. I'll only be covering the basic project structure, packages, and
 tools necessary to get started.
 
-
 ### Prerequisites {#prerequisites}
 
--   Basic understanding of javascript
--   Commandline familiarity
--   Familiarity with NPM
+- Basic understanding of javascript
+- Commandline familiarity
+- Familiarity with NPM
 
 To be begin we first need to insure that node is installed on the machine. We
 will be using the vue-cli tool to generate the project. To check that it is
@@ -599,7 +608,6 @@ project/
 └── package.json
 ```
 
-
 ### Backend Configuration {#backend-configuration}
 
 We're now ready to setup our express backend and link it to mongodb using the
@@ -617,11 +625,11 @@ application
 $ npm install --save express cors morgan body-parser mongoose
 ```
 
--   express is used for handling http requests and responses.
--   cors allows cross-origin resource sharing.
--   morgan is an express middleware for logging.
--   body-parser will parse incoming request bodies before hitting handlers.
--   mongoose will be used to connect to our mongo db.
+- express is used for handling http requests and responses.
+- cors allows cross-origin resource sharing.
+- morgan is an express middleware for logging.
+- body-parser will parse incoming request bodies before hitting handlers.
+- mongoose will be used to connect to our mongo db.
 
 In the server directory, make a new directory src to hold all our backend source code, and create the app.js file,
 
@@ -638,36 +646,36 @@ $ mkdir models
 Edit the new app.js file to contain all our installed packages,
 
 ```javascript
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
-const morgan = require('morgan')
-var mongoose = require('mongoose');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const morgan = require("morgan");
+var mongoose = require("mongoose");
 
 // Express configuration
-const app = express()
-app.use(morgan('combined'))
-app.use(bodyParser.json())
-app.use(cors())
-app.listen(process.env.PORT || 8081)
+const app = express();
+app.use(morgan("combined"));
+app.use(bodyParser.json());
+app.use(cors());
+app.listen(process.env.PORT || 8081);
 
 // Mongoose configuration
-mongoose.connect('mongodb://localhost:27017/project');
+mongoose.connect("mongodb://localhost:27017/project");
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback){
+db.once("open", function(callback) {
   console.log("Connection Succeeded");
 });
 
 // Test handler
-app.get('/test', (req, res) => {
-  res.send(
-    [{
-      serviceName: 'test',
+app.get("/test", (req, res) => {
+  res.send([
+    {
+      serviceName: "test",
       isRunning: true
-    }]
-  )
-})
+    }
+  ]);
+});
 ```
 
 Let's run the application,
@@ -718,18 +726,17 @@ And direct your browser to <http://localhost:8081>. Update the test function in 
 
 ```javascript
 // Test handler
-app.get('/test', (req, res) => {
-  res.send(
-    [{
-      serviceName: 'test',
+app.get("/test", (req, res) => {
+  res.send([
+    {
+      serviceName: "test",
       isRunning: false
-    }]
-  )
-})
+    }
+  ]);
+});
 ```
 
 Save the file and refresh your browser. You should now see the updated test handler. Our backend is now set up for basic testing.
-
 
 ### Frontend Configuration {#frontend-configuration}
 
@@ -762,7 +769,6 @@ Great! Everything seems to be working. Let's begin by cleaning up some of the bo
 $ sudo rm -rf src\*
 ```
 
-
 #### main.js {#main-dot-js}
 
 Create the entry-point to our vue application under src.
@@ -776,21 +782,20 @@ Edit the file to contain,
 ```jsx
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from "vue";
+import App from "./App";
+import router from "./router";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
   components: { App },
-  template: '<App/>'
-})
+  template: "<App/>"
+});
 ```
-
 
 #### Root Vue {#root-vue}
 
@@ -816,7 +821,6 @@ export default {
 </script>
 ```
 
-
 #### Vue Router {#vue-router}
 
 Create the router directory,
@@ -834,24 +838,23 @@ $ touch src/router/index.js
 Edit the file to contain,
 
 ```jsx
-import Vue from 'vue'
-import Router from 'vue-router'
-import HelloWorld from '@/components/Home'
+import Vue from "vue";
+import Router from "vue-router";
+import HelloWorld from "@/components/Home";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'Home',
+      path: "/",
+      name: "Home",
       component: Home
     }
   ]
-})
+});
 ```
-
 
 #### Services directory {#services-directory}
 
@@ -864,13 +867,13 @@ $ mkdir src/services
 Create a file called Api.js and add the following to the file,
 
 ```jsx
-import axios from 'axios'
+import axios from "axios";
 
-export default() => {
+export default () => {
   return axios.create({
     baseURL: `http://localhost:8081`
-  })
-}
+  });
+};
 ```
 
 In the same file let's add another file TestService.js that will make requests to our backend.
@@ -878,15 +881,14 @@ In the same file let's add another file TestService.js that will make requests t
 Add to the file,
 
 ```jsx
-import Api from '@/services/Api'
+import Api from "@/services/Api";
 
 export default {
-  testStatus () {
-    return Api().get('test')
+  testStatus() {
+    return Api().get("test");
   }
-}
+};
 ```
-
 
 #### Home Component {#home-component}
 
@@ -921,7 +923,6 @@ export default {
       status: []
 ```
 
-
 #### Assets {#assets}
 
 Finally create a directory to hold any future assets.
@@ -937,7 +938,6 @@ Check to see if everything was created properly at <http://localhost:8081>
 
 If it looks similar to the picture above our frontend and backend our now connected!
 
-
 ### Deploying the application {#deploying-the-application}
 
 Now that the frontend and backend are running successfully on the local machine,
@@ -948,12 +948,10 @@ The rest of the post assumes you have a remote server to deploy the application
 to using any hosting provider of your choice (aws, google cloud, azure,
 digitalocean, etc.)
 
-
 #### MongoDB {#mongodb}
 
 SSH into the remote server and follow the previous instructions used to
 provision our local machine.
-
 
 #### nginx {#nginx}
 
@@ -965,7 +963,6 @@ code and www.[your-domain-name].com/api to our express app running on port 8081.
 
 Before we begin configuring the nginx to reverse proxy incoming requests we'll
 need to move the code on our local machine to the remote server
-
 
 #### Push project to the remote server {#push-project-to-the-remote-server}
 
@@ -996,7 +993,6 @@ $ npm run build
 When the build completes, you should see a new folder under the root project
 directory called dist, this is the folder nginx should serve when a client makes
 a request.
-
 
 #### Host Server Configuration {#host-server-configuration}
 
@@ -1078,18 +1074,13 @@ should serve up the test home page.
 
 This concludes the basic setup for a MEVN stack project.
 
-
 ## <span class="org-todo todo TODO">TODO</span> Synology setup {#synology-setup}
-
 
 ## <span class="org-todo todo TODO">TODO</span> Emacs setup {#emacs-setup}
 
-
 ## <span class="org-todo todo TODO">TODO</span> Blog setup {#blog-setup}
 
-
 ## <span class="org-todo todo TODO">TODO</span> Thoughts on current state of affairs {#thoughts-on-current-state-of-affairs}
-
 
 ## <span class="org-todo todo TODO">TODO</span> Keyboard {#keyboard}
 
