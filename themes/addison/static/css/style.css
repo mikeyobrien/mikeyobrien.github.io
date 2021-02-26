@@ -56,6 +56,11 @@ nav {
     font-weight: normal;
 }
 
+.social {
+    display: flex;
+    justify-content: center;
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -125,10 +130,25 @@ a:visited {
 footer {
     display: flex;
     justify-content: center;
+
+}
+
+.footer {
+    align-items: center:
+    flex-direction: column;
 }
 
 .articles-header {
     text-align: center;
+}
+
+.inline-svg {
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  top: 0.15rem;
+  position: relative;
+  padding: 0.1rem;
 }
 
 
@@ -136,11 +156,11 @@ footer {
 /* Code */
 /* Background */ .chroma { color: #f8f8f2; background-color: #272822 }
 /* Error */ .chroma .err { color: #960050; background-color: #1e0010 }
-/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
-/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
+/* LineTableTD */ .chroma .lntd { vertical-align: top; padding: 2; margin: 0; border: 0; }
+/* LineTable */ .chroma .lntable { border-spacing: 0; padding: 2; margin: 0; border: 0; width: auto; overflow: auto; display: block; }
 /* LineHighlight */ .chroma .hl { display: block; width: 100%;background-color: #ffffcc }
-/* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
-/* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 0 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbersTable */ .chroma .lnt { margin-right: 0.4em; padding: 2 0.4em 0 0.4em;color: #7f7f7f }
+/* LineNumbers */ .chroma .ln { margin-right: 0.4em; padding: 2 0.4em 0 0.4em;color: #7f7f7f }
 /* Keyword */ .chroma .k { color: #66d9ef }
 /* KeywordConstant */ .chroma .kc { color: #66d9ef }
 /* KeywordDeclaration */ .chroma .kd { color: #66d9ef }

@@ -2,7 +2,10 @@ baseURL = "https://www.mikeyobrien.com"
 languageCode = "en-us"
 title = "Mikey O'Brien"
 theme = "addison"
-googleAnalytics = "UA-34179203-1"
+[params]
+  twitter = "_mikeyobrien"
+  github = "mikeyobrien"
+
 
 [menu]
   [[menu.main]]

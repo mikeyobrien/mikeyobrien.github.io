@@ -1,7 +1,15 @@
 <div class="header">
-<h1 class="site-header">
-    <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-</h1>
+    <h1 class="site-header">
+        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+    </h1>
+    <div class="social">
+        <a href="https://www.twitter.com/{{ .Site.Params.twitter }}" target="_blank" rel="noopener">
+            {{ partial "fontawesome.html" "twitter" }}
+        </a>
+        <a href="https://www.github.com/{{ .Site.Params.github }}" target="_blank" rel="noopener">
+            {{ partial "fontawesome.html" "github" }}
+	    </a>
+    </div>
     <nav>
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
