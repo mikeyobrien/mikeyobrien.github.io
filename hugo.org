@@ -95,7 +95,11 @@ Tell the internet about yourself here.
 #+END_SRC
 
 Place this .org file at the root of your hugo website directory.
-Source for this blog can be found at [[https://github.com/mikeyobrien/blog]].
+Source for this blog can be found at
+[[https://github.com/mikeyobrien/mikeyobrien.github.io]].[fn:1]
+
+[fn:1] Updated to new repo location
+
 
 ** TODO Development Tools 2020
 :PROPERTIES:

@@ -1,7 +1,7 @@
 +++
 title = "Using ox-hugo to manage content"
 date = 2020-04-19
-lastmod = 2020-04-19T18:00:21-05:00
+lastmod = 2021-02-25T20:57:32-06:00
 draft = false
 weight = 2001
 +++
@@ -83,7 +83,7 @@ Tell the internet about yourself here.
 ```
 
 Place this .org file at the root of your hugo website directory.
-Source for this blog can be found at <https://github.com/mikeyobrien/blog>.
+Source for this blog can be found at
+<https://github.com/mikeyobrien/mikeyobrien.github.io>.[^fn:1]
 
-[//]: # "Exported with love from a post written in Org mode"
-[//]: # "- https://github.com/kaushalmodi/ox-hugo"
+[^fn:1]: Updated to new repo location
