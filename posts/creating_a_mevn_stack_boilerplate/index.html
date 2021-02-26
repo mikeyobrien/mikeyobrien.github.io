@@ -1,0 +1,238 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=HandheldFriendly content="True"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer-when-downgrade"><title>Creating a MEVN stack boilerplate - Mikey O'Brien</title><meta name=description content><link rel=alternate type=application/rss+xml title=RSS href=/rss/><link rel=icon type=image/x-icon href=/favicon.ico><link rel=apple-touch-icon-precomposed href=/favicon.png><link rel=stylesheet href="/css/style.css?rnd=1614304435"><meta property="og:title" content="Creating a MEVN stack boilerplate"><meta property="og:description" content="This post will cover the basic steps needed to set up a project using the MEVN stack (mongo, express, vue, and nginx). Prior warning, if you are looking for a tutorial on creating a web application using the MEVN stack you may want to look elsewhere. I&rsquo;ll only be covering the basic project structure, packages, and tools necessary to get started.
+Prerequisites  Basic understanding of javascript Commandline familiarity Familiarity with NPM  To be begin we first need to insure that node is installed on the machine."><meta property="og:type" content="article"><meta property="og:url" content="https://www.mikeyobrien.com/posts/creating_a_mevn_stack_boilerplate/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2018-06-12T00:00:00+00:00"><meta property="article:modified_time" content="2020-04-19T18:00:32-05:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Creating a MEVN stack boilerplate"><meta name=twitter:description content="This post will cover the basic steps needed to set up a project using the MEVN stack (mongo, express, vue, and nginx). Prior warning, if you are looking for a tutorial on creating a web application using the MEVN stack you may want to look elsewhere. I&rsquo;ll only be covering the basic project structure, packages, and tools necessary to get started.
+Prerequisites  Basic understanding of javascript Commandline familiarity Familiarity with NPM  To be begin we first need to insure that node is installed on the machine."></head><body><div class=container><header><div class=header><h1 class=site-header><a href=https://www.mikeyobrien.com>Mikey O'Brien</a></h1><nav><a class=navtext href=/about/ title>Software Engineer | Austin, TX</a></nav></div></header><main><main><article><div class=post-title><h1 class=post-page-title>Creating a MEVN stack boilerplate</h1><time class=time>Jun 12, 2018</time></div><div><p>This post will cover the basic steps needed to set up a project using the MEVN
+stack (mongo, express, vue, and nginx). Prior warning, if you are looking for a
+tutorial on creating a web application using the MEVN stack you may want to look
+elsewhere. I&rsquo;ll only be covering the basic project structure, packages, and
+tools necessary to get started.</p><h2 id=prerequisites>Prerequisites</h2><ul><li>Basic understanding of javascript</li><li>Commandline familiarity</li><li>Familiarity with NPM</li></ul><p>To be begin we first need to insure that node is installed on the machine. We
+will be using the vue-cli tool to generate the project. To check that it is
+installed try running,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ node --version
+</code></pre></div><p>If a version number isn&rsquo;t installed we can install nodejs with the following,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+$ sudo apt-get install -y nodejs
+</code></pre></div><p>Now that nodejs and npm are installed we can begin the process of setting up our vue and express project folder.</p><p>First install vue-cli:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm install -g vue-cli
+</code></pre></div><p>Now that vue-cli is installed we can use webpack template to generate a vue project</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ vue init webpack project
+</code></pre></div><p>For this particular project, choose the default settings for everything. Once
+finished initializing, move to the newly generated project folder</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ cd project
+</code></pre></div><p>Now that we&rsquo;re in our root project folder we&rsquo;ll create a server subdirectory
+that will contain the backend express code,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir server
+</code></pre></div><p>Once we&rsquo;re all set up the directory structure will look like this,</p><pre><code class=language-nil data-lang=nil>project/
+├── build
+├── config
+├── node_modules
+├── server
+├── src
+├── static
+├── test
+├── README.md
+├── index.html
+├── package-lock.json
+└── package.json
+</code></pre><h2 id=backend-configuration>Backend Configuration</h2><p>We&rsquo;re now ready to setup our express backend and link it to mongodb using the
+mongoose library.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ cd server
+$ npm init
+</code></pre></div><p>Let&rsquo;s being with installing the basic packages that are required for our
+application</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm install --save express cors morgan body-parser mongoose
+</code></pre></div><ul><li>express is used for handling http requests and responses.</li><li>cors allows cross-origin resource sharing.</li><li>morgan is an express middleware for logging.</li><li>body-parser will parse incoming request bodies before hitting handlers.</li><li>mongoose will be used to connect to our mongo db.</li></ul><p>In the server directory, make a new directory src to hold all our backend source code, and create the app.js file,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir src <span style=color:#f92672>&amp;&amp;</span> touch src/app.js
+</code></pre></div><p>Also, create our models directory to hold our future schemas,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir models
+</code></pre></div><p>Edit the new app.js file to contain all our installed packages,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>express</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;express&#34;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>bodyParser</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;body-parser&#34;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>cors</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;cors&#34;</span>);
+<span style=color:#66d9ef>const</span> <span style=color:#a6e22e>morgan</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;morgan&#34;</span>);
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>mongoose</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>require</span>(<span style=color:#e6db74>&#34;mongoose&#34;</span>);
+
+<span style=color:#75715e>// Express configuration
+</span><span style=color:#75715e></span><span style=color:#66d9ef>const</span> <span style=color:#a6e22e>app</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>express</span>();
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>morgan</span>(<span style=color:#e6db74>&#34;combined&#34;</span>));
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>bodyParser</span>.<span style=color:#a6e22e>json</span>());
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>cors</span>());
+<span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>listen</span>(<span style=color:#a6e22e>process</span>.<span style=color:#a6e22e>env</span>.<span style=color:#a6e22e>PORT</span> <span style=color:#f92672>||</span> <span style=color:#ae81ff>8081</span>);
+
+<span style=color:#75715e>// Mongoose configuration
+</span><span style=color:#75715e></span><span style=color:#a6e22e>mongoose</span>.<span style=color:#a6e22e>connect</span>(<span style=color:#e6db74>&#34;mongodb://localhost:27017/project&#34;</span>);
+<span style=color:#66d9ef>var</span> <span style=color:#a6e22e>db</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>mongoose</span>.<span style=color:#a6e22e>connection</span>;
+<span style=color:#a6e22e>db</span>.<span style=color:#a6e22e>on</span>(<span style=color:#e6db74>&#34;error&#34;</span>, <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>error</span>.<span style=color:#a6e22e>bind</span>(<span style=color:#a6e22e>console</span>, <span style=color:#e6db74>&#34;connection error&#34;</span>));
+<span style=color:#a6e22e>db</span>.<span style=color:#a6e22e>once</span>(<span style=color:#e6db74>&#34;open&#34;</span>, <span style=color:#66d9ef>function</span>(<span style=color:#a6e22e>callback</span>) {
+  <span style=color:#a6e22e>console</span>.<span style=color:#a6e22e>log</span>(<span style=color:#e6db74>&#34;Connection Succeeded&#34;</span>);
+});
+
+<span style=color:#75715e>// Test handler
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;/test&#34;</span>, (<span style=color:#a6e22e>req</span>, <span style=color:#a6e22e>res</span>) =&gt; {
+  <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>send</span>([
+    {
+      <span style=color:#a6e22e>serviceName</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;test&#34;</span>,
+      <span style=color:#a6e22e>isRunning</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>true</span>
+    }
+  ]);
+});
+</code></pre></div><p>Let&rsquo;s run the application,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ node app.js
+</code></pre></div><p>You&rsquo;ll most likely see the connection error printed to the console. If so,
+follow the steps to install the community edition for your OS at,
+<a href=https://docs.mongodb.com/manual/administration/install-community/>https://docs.mongodb.com/manual/administration/install-community/</a></p><p>Now that mongodb is installed let&rsquo;s try that again.</p><p>Hopefully we now see &ldquo;Connection Succeeded&rdquo;.</p><p>Running the server app using node app.js isn&rsquo;t very convenient, lets install
+nodemon so everytime our server code is updated we reload the backend code,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm install --save nodemon
+</code></pre></div><p>Edit package.json to contain the following script,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
+  <span style=color:#f92672>&#34;name&#34;</span>: <span style=color:#e6db74>&#34;server&#34;</span>,
+  <span style=color:#f92672>&#34;version&#34;</span>: <span style=color:#e6db74>&#34;1.0.0&#34;</span>,
+  <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>,
+  <span style=color:#f92672>&#34;main&#34;</span>: <span style=color:#e6db74>&#34;index.js&#34;</span>,
+  <span style=color:#f92672>&#34;scripts&#34;</span>: {
+    <span style=color:#f92672>&#34;start&#34;</span>: <span style=color:#e6db74>&#34;./node_modules/nodemon/bin/nodemon.js src/app.js&#34;</span>,
+    <span style=color:#f92672>&#34;test&#34;</span>: <span style=color:#e6db74>&#34;echo \&#34;Error: no test specified\&#34; &amp;&amp; exit 1&#34;</span>
+  },
+  <span style=color:#f92672>&#34;author&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>,
+  <span style=color:#f92672>&#34;license&#34;</span>: <span style=color:#e6db74>&#34;ISC&#34;</span>
+}
+</code></pre></div><p>Lets confirm everything is working as expected. Run the command,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm run start
+</code></pre></div><p>And direct your browser to <a href=http://localhost:8081>http://localhost:8081</a>. Update the test function in src/app.js to</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=color:#75715e>// Test handler
+</span><span style=color:#75715e></span><span style=color:#a6e22e>app</span>.<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;/test&#34;</span>, (<span style=color:#a6e22e>req</span>, <span style=color:#a6e22e>res</span>) =&gt; {
+  <span style=color:#a6e22e>res</span>.<span style=color:#a6e22e>send</span>([
+    {
+      <span style=color:#a6e22e>serviceName</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;test&#34;</span>,
+      <span style=color:#a6e22e>isRunning</span><span style=color:#f92672>:</span> <span style=color:#66d9ef>false</span>
+    }
+  ]);
+});
+</code></pre></div><p>Save the file and refresh your browser. You should now see the updated test handler. Our backend is now set up for basic testing.</p><h2 id=frontend-configuration>Frontend Configuration</h2><p>Let&rsquo;s ensure everything is working correctly. Switch back to root of the project,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ cd ..
+</code></pre></div><p>Install the base packages we&rsquo;ll need for this project.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm install axios
+</code></pre></div><p>Well use the axios library to make http requests to our backend service.
+run,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>npm run dev
+</code></pre></div><p>Open your browser to: <a href=http://localhost:8081>http://localhost:8081</a> where you should see something similar to the image below.</p><figure><img src=/images/vue.png></figure><p>Great! Everything seems to be working. Let&rsquo;s begin by cleaning up some of the boilerplate provided by vue init and creating our src directory from scratch.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ sudo rm -rf src<span style=color:#ae81ff>\*</span>
+</code></pre></div><h3 id=main-dot-js>main.js</h3><p>Create the entry-point to our vue application under src.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>touch src<span style=color:#ae81ff>\m</span>ain.js
+</code></pre></div><p>Edit the file to contain,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#75715e>// The Vue build version to load with the `import` command
+</span><span style=color:#75715e>// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+</span><span style=color:#75715e></span><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Vue</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;vue&#34;</span>;
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>App</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./App&#34;</span>;
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>router</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;./router&#34;</span>;
+
+<span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>config</span>.<span style=color:#a6e22e>productionTip</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>false</span>;
+
+<span style=color:#75715e>/* eslint-disable no-new */</span>
+<span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Vue</span>({
+  <span style=color:#a6e22e>el</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;#app&#34;</span>,
+  <span style=color:#a6e22e>router</span>,
+  <span style=color:#a6e22e>components</span><span style=color:#f92672>:</span> { <span style=color:#a6e22e>App</span> },
+  <span style=color:#a6e22e>template</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;&lt;App/&gt;&#34;</span>
+});
+</code></pre></div><h3 id=root-vue>Root Vue</h3><p>Create the root vue file,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ touch src/App.Vue
+</code></pre></div><p>Edit the file to contain,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx>&lt;<span style=color:#f92672>template</span>&gt;
+  &lt;<span style=color:#f92672>div</span> <span style=color:#a6e22e>id</span><span style=color:#f92672>=</span><span style=color:#e6db74>&#34;app&#34;</span>&gt;
+    &lt;<span style=color:#f92672>router</span><span style=color:#960050;background-color:#1e0010>-</span><span style=color:#a6e22e>view</span>/&gt;
+  &lt;/<span style=color:#f92672>div</span>&gt;
+&lt;/<span style=color:#f92672>template</span>&gt;
+
+&lt;<span style=color:#f92672>script</span>&gt;
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> {
+  <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;App&#39;</span>
+}
+&lt;/<span style=color:#f92672>script</span>&gt;
+</code></pre></div><h3 id=vue-router>Vue Router</h3><p>Create the router directory,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir src/router
+</code></pre></div><p>Create the index.js file that declares our apps routes,</p><pre><code class=language-nil data-lang=nil>$ touch src/router/index.js
+</code></pre><p>Edit the file to contain,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Vue</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;vue&#34;</span>;
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Router</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;vue-router&#34;</span>;
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>HelloWorld</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;@/components/Home&#34;</span>;
+
+<span style=color:#a6e22e>Vue</span>.<span style=color:#a6e22e>use</span>(<span style=color:#a6e22e>Router</span>);
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> <span style=color:#66d9ef>new</span> <span style=color:#a6e22e>Router</span>({
+  <span style=color:#a6e22e>mode</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;history&#34;</span>,
+  <span style=color:#a6e22e>routes</span><span style=color:#f92672>:</span> [
+    {
+      <span style=color:#a6e22e>path</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;/&#34;</span>,
+      <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#34;Home&#34;</span>,
+      <span style=color:#a6e22e>component</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Home</span>
+    }
+  ]
+});
+</code></pre></div><h3 id=services-directory>Services directory</h3><p>Create the services directory to contain the code that connects to our backend api,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir src/services
+</code></pre></div><p>Create a file called Api.js and add the following to the file,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>axios</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;axios&#34;</span>;
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> () =&gt; {
+  <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>axios</span>.<span style=color:#a6e22e>create</span>({
+    <span style=color:#a6e22e>baseURL</span><span style=color:#f92672>:</span> <span style=color:#e6db74>`http://localhost:8081`</span>
+  });
+};
+</code></pre></div><p>In the same file let&rsquo;s add another file TestService.js that will make requests to our backend.</p><p>Add to the file,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>Api</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#34;@/services/Api&#34;</span>;
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> {
+  <span style=color:#a6e22e>testStatus</span>() {
+    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>Api</span>().<span style=color:#a6e22e>get</span>(<span style=color:#e6db74>&#34;test&#34;</span>);
+  }
+};
+</code></pre></div><h3 id=home-component>Home Component</h3><p>Create the components directory,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir src/components
+</code></pre></div><p>Create the Home component</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>touch src/components/Home.vue
+</code></pre></div><p>Add to the Home.vue file,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx>&lt;<span style=color:#f92672>template</span>&gt;
+  &lt;<span style=color:#f92672>div</span>&gt;
+    {{ <span style=color:#a6e22e>status</span> }}
+  &lt;/<span style=color:#f92672>div</span>&gt;
+&lt;/<span style=color:#f92672>template</span>&gt;
+
+&lt;<span style=color:#f92672>script</span>&gt;
+<span style=color:#66d9ef>import</span> <span style=color:#a6e22e>TestService</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;@/services/TestService&#39;</span>
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span> {
+  <span style=color:#a6e22e>name</span><span style=color:#f92672>:</span> <span style=color:#e6db74>&#39;Home&#39;</span>,
+  <span style=color:#a6e22e>data</span> () {
+    <span style=color:#66d9ef>return</span> {
+      <span style=color:#a6e22e>status</span><span style=color:#f92672>:</span> []
+</code></pre></div><h3 id=assets>Assets</h3><p>Finally create a directory to hold any future assets.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ mkdir src/assets
+</code></pre></div><p>If you stopped the dev server run npm run dev
+Check to see if everything was created properly at <a href=http://localhost:8081>http://localhost:8081</a></p><figure><img src=/images/vue-assets.png></figure><p>If it looks similar to the picture above our frontend and backend our now connected!</p><h2 id=deploying-the-application>Deploying the application</h2><p>Now that the frontend and backend are running successfully on the local machine,
+it&rsquo;s time to provision the server that we will deploy the boilerplate
+application on.</p><p>The rest of the post assumes you have a remote server to deploy the application
+to using any hosting provider of your choice (aws, google cloud, azure,
+digitalocean, etc.)</p><h3 id=mongodb>MongoDB</h3><p>SSH into the remote server and follow the previous instructions used to
+provision our local machine.</p><h3 id=nginx>nginx</h3><p>Right now we are running the backend on 8081. A vast majority of the time users
+should be able to reach the frontend and backend under a single ip
+address/domain. In order to achieve this we have to use a reverse proxy to
+redirect incoming requests to www.[your-domain-name].com to our built frontend
+code and www.[your-domain-name].com/api to our express app running on port 8081.</p><p>Before we begin configuring the nginx to reverse proxy incoming requests we&rsquo;ll
+need to move the code on our local machine to the remote server</p><h3 id=push-project-to-the-remote-server>Push project to the remote server</h3><p>On the remote server change your working directory to <em>var/www</em>. We&rsquo;ll need to
+define where our built project resides which will make more sense later when we
+get to setting the nginx configuration.</p><p>Using git we can push the code to a remote repository, then clone and build the
+application on the host server following the same steps above to provision the
+remote server with nodejs and npm.</p><p>Another option would be to compress the project folder and copy it over to the
+target server, although using this method results in losing the benefit of
+source control.</p><p>Once the project is under <em>var/www/</em></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ cd &lt;project&gt;
+</code></pre></div><p>And build the vue app for production.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ npm run build
+</code></pre></div><p>When the build completes, you should see a new folder under the root project
+directory called dist, this is the folder nginx should serve when a client makes
+a request.</p><h3 id=host-server-configuration>Host Server Configuration</h3><p>Now that the necessary files have been pushed and built it is time to configure
+nginx to serve our boilerplate application.</p><p>Install nginx,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ sudo apt-get update <span style=color:#f92672>&amp;&amp;</span> sudo apt-get upgrade sudo apt-get install nginx -y
+</code></pre></div><p>Confirm nginx is installed.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ sudo systemctl status nginx
+</code></pre></div><p>Configure nginx to start on system bootup. sudo systemctl enable nginx</p><p>Using your preferred text editor, edit the nginx config to serve the application
+over port 80. The config file can be found at</p><pre><code class=language-nil data-lang=nil>/etc/nginx/sites-available/default
+</code></pre><p>Edit the file to match the following,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-nginx data-lang=nginx><span style=color:#66d9ef>server</span> {
+  <span style=color:#f92672>listen</span> <span style=color:#ae81ff>80</span> <span style=color:#e6db74>default_server</span>;
+  <span style=color:#f92672>server_name</span> <span style=color:#e6db74>&lt;server_ip/domain</span> <span style=color:#e6db74>name&gt;</span>;
+
+  <span style=color:#f92672>location</span> <span style=color:#e6db74>/</span> {
+    <span style=color:#f92672>root</span> <span style=color:#e6db74>/var/www/&lt;project&gt;/dist</span>;
+    <span style=color:#f92672>try_files</span> $uri <span style=color:#e6db74>/index.html</span>;
+  }
+
+  <span style=color:#f92672>location</span> <span style=color:#e6db74>/files/</span> {
+    <span style=color:#f92672>autoindex</span> <span style=color:#66d9ef>on</span>;
+    <span style=color:#f92672>root</span> <span style=color:#e6db74>/var/www/&lt;project&gt;dist/static</span>;
+  }
+
+  <span style=color:#f92672>location</span> <span style=color:#e6db74>/api/</span> {
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Real-IP</span> $remote_addr;
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-Forwarded-For</span> $proxy_add_x_forwarded_for;
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>Host</span> $http_host;
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>X-NginX-Proxy</span> <span style=color:#e6db74>true</span>;
+    <span style=color:#f92672>proxy_pass</span> <span style=color:#e6db74>http://127.0.0.1:8081/</span>;
+    <span style=color:#f92672>proxy_redirect</span> <span style=color:#66d9ef>off</span>;
+    <span style=color:#f92672>proxy_http_version</span> <span style=color:#ae81ff>1</span><span style=color:#e6db74>.1</span>;
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>Upgrade</span> $http_upgrade;
+    <span style=color:#f92672>proxy_set_header</span> <span style=color:#e6db74>Connection</span> <span style=color:#e6db74>&#34;upgrade&#34;</span>;
+    <span style=color:#f92672>proxy_redirect</span> <span style=color:#66d9ef>off</span>;
+    <span style=color:#f92672>proxy_set_header</span>   <span style=color:#e6db74>X-Forwarded-Proto</span> $scheme;
+  }
+}
+</code></pre></div><p>Update nginx to read the new config file.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ sudo systemctl restart nginx
+</code></pre></div><p>The last thing we need to do is edit the Api.js file to use the correct domain
+name/ip address as the baseURL.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-jsx data-lang=jsx><span style=color:#66d9ef>import</span> <span style=color:#a6e22e>axios</span> <span style=color:#a6e22e>from</span> <span style=color:#e6db74>&#39;axios&#39;</span>
+
+<span style=color:#66d9ef>export</span> <span style=color:#66d9ef>default</span>() =&gt; { <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>axios</span>.<span style=color:#a6e22e>create</span>({ <span style=color:#a6e22e>baseURL</span><span style=color:#f92672>:</span>
+  <span style=color:#e6db74>`http://&lt;server_ip/domain&gt;/api`</span> }) } <span style=color:#ae81ff>1234567</span>
+</code></pre></div><p>If all went well, directing your browser to the ip/domain name of the server
+should serve up the test home page.</p><p>This concludes the basic setup for a MEVN stack project.</p></div></article></main></main><footer><footer><p>&copy; 2021 Mikey O'Brien</a></p></footer></footer></div></body></html>

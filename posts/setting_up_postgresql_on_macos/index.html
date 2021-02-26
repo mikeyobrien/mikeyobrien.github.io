@@ -1,0 +1,102 @@
+<!doctype html><html><head><meta charset=utf-8><meta name=HandheldFriendly content="True"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=referrer content="no-referrer-when-downgrade"><title>Setting up PostgreSQL on MacOS - Mikey O'Brien</title><meta name=description content><link rel=alternate type=application/rss+xml title=RSS href=/rss/><link rel=icon type=image/x-icon href=/favicon.ico><link rel=apple-touch-icon-precomposed href=/favicon.png><link rel=stylesheet href="/css/style.css?rnd=1614304435"><meta property="og:title" content="Setting up PostgreSQL on MacOS"><meta property="og:description" content="For this tutorial we will be using postgres.app from the folks at https://eggerapps.at/ to install and setup a local development server on macOS.
+Download and install using the instructions at https://postgresapp.com/
+Start postgres from the applications folder Ensure the CLI tools are working by typing,
+createdb This should result in the following error if everything was installed correctly,
+createdb: database creation failed: ERROR: database &#34;username&#34; already exists To create your development db enter into the console,"><meta property="og:type" content="article"><meta property="og:url" content="https://www.mikeyobrien.com/posts/setting_up_postgresql_on_macos/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-02-18T00:00:00+00:00"><meta property="article:modified_time" content="2020-04-19T18:00:26-05:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Setting up PostgreSQL on MacOS"><meta name=twitter:description content="For this tutorial we will be using postgres.app from the folks at https://eggerapps.at/ to install and setup a local development server on macOS.
+Download and install using the instructions at https://postgresapp.com/
+Start postgres from the applications folder Ensure the CLI tools are working by typing,
+createdb This should result in the following error if everything was installed correctly,
+createdb: database creation failed: ERROR: database &#34;username&#34; already exists To create your development db enter into the console,"></head><body><div class=container><header><div class=header><h1 class=site-header><a href=https://www.mikeyobrien.com>Mikey O'Brien</a></h1><nav><a class=navtext href=/about/ title>Software Engineer | Austin, TX</a></nav></div></header><main><main><article><div class=post-title><h1 class=post-page-title>Setting up PostgreSQL on MacOS</h1><time class=time>Feb 18, 2019</time></div><div><p>For this tutorial we will be using postgres.app from the folks at <a href=https://eggerapps.at/>https://eggerapps.at/</a> to install and setup a local development server on macOS.</p><p>Download and install using the instructions at <a href=https://postgresapp.com/>https://postgresapp.com/</a></p><p>Start postgres from the applications folder
+Ensure the CLI tools are working by typing,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>createdb
+</code></pre></div><p>This should result in the following error if everything was installed correctly,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>createdb: database creation failed: ERROR: database <span style=color:#e6db74>&#34;username&#34;</span> already exists
+</code></pre></div><p>To create your development db enter into the console,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>createdb devdb
+</code></pre></div><p>If for whatever reason this db needs to be removed use,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>dropdb devdb
+</code></pre></div><p>Access the db we have just created,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>psql devdb
+</code></pre></div><p>This should drop you into an interactive terminal program where we will be able to enter, edit, and execute sql commands.</p><p>From here you can also execute internal psql commands beginning with the backslash character, &ldquo;&rdquo;,
+that are not SQL commands.</p><p>You can see what commands are available to you with the help command,</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>devdb<span style=color:#f92672>=</span><span style=color:#75715e># help</span>
+You are using psql, the command-line interface to PostgreSQL.
+Type:  <span style=color:#ae81ff>\c</span>opyright <span style=color:#66d9ef>for</span> distribution terms
+       <span style=color:#ae81ff>\h</span> <span style=color:#66d9ef>for</span> help with SQL commands
+       <span style=color:#ae81ff>\?</span> <span style=color:#66d9ef>for</span> help with psql commands
+       <span style=color:#ae81ff>\g</span> or terminate with semicolon to execute query
+       <span style=color:#ae81ff>\q</span> to quit
+</code></pre></div><h2 id=moving-from-san-diego-to-austin>Moving from San Diego to Austin</h2><p>A couple of months ago an opportunity opened up at work to move to Austin,
+Texas. I toyed with the idea of making the move but never took it seriously.
+Next thing you know, the lease on my apartment at the time was about to end and
+I still had not found a new place to live in San Diego. Queue time to take the
+decision seriously. Growing up and attending college in San Diego I felt like it
+would be a good time to experience something new and committed to going. And,
+after a hectic two months of moving halfway across the country, I&rsquo;m finally
+starting to settle in. Here are some things I&rsquo;ve learned leading up to the move
+and what I&rsquo;ve learned from a little over a month in Austin.</p><h2 id=start-as-early-as-possible>Start as early as possible</h2><p>Moving across the country with one month notice is certainly possible but I&rsquo;d
+highly recommend against it. My girlfriend and I had a little less than a month
+to find a place to live, pack, ship, and drive out to Texas to avoid being
+homeless. We were fortunate my family in San Antonio was able to view apartments
+for us. If not we would have been rushed into picking a place to live. Spreading
+out the cadence at which you pack, donate, and sell items relieves a lot of the
+pressure of the move. Make the months prior as easy possible by starting as soon
+as you can.</p><h2 id=save-money-by-shipping>Save money by shipping</h2><p>Initially, we thought of using a moving company to pack up our belongings and
+move them to Austin for us. While this would be the most painless route, expect
+to burn a huge hole in your pocket. Our next option was to throw our belongings
+in a U-Haul and drive them ourselves. That too was costlier then we had
+expected. Especially taking into account the actual value of everything.</p><p>We settled on packing whatever valuables we could fit into the back of my car
+and use Amtrak&rsquo;s shipping services for the rest (clothes, books, kitchen goods,
+etc). What didn&rsquo;t fit we shipped using UPS which could have been saved even
+further by shopping shipping services. For furniture, we realized we could
+donate or sell most of it and rebuy the same furniture and still save. Overall
+we offset the costs by more than half and were able to redistribute the costs of
+buying new furniture to after the move. This option may not work for everyone
+but is worth taking into account if you&rsquo;re willing to part with most of your
+belongings and start over.</p><h2 id=austin-feels-small>Austin feels small</h2><p>This one is subjective. Coming from San Diego and spending a significant time in
+LA. Austin feels small. The small neighboring city of Round Rock is 21 minutes
+north of Downtown Austin. My hometown of Mira Mesa in San Diego is 25 minutes
+from Downtown San Diego yet we&rsquo;re still considered to be in the city of San
+Diego. Everything feel&rsquo;s closer then I am accustomed to. This doesn&rsquo;t mean your
+commute will be short though. Austin is supposedly notorious for its traffic.
+Although nothing out of the ordinary compared to LA or San Francisco.</p><h2 id=texans-are-nice>Texans are nice</h2><p>It will take a while to get used to how nice people have been in Texas. It&rsquo;s
+downright strange at times. Friendly&mldr; but strange. Just the other day we were
+in the parking lot with our throw pillow haul from HomeGoods when a random
+stranger was genuinely excited for us when he saw that we had bought pillows.
+The week prior we were at Whole Foods when the cashier complimented on our
+choice of breakfast tacos and asked about our plans for the day. I promised I&rsquo;m
+not trying to be rude when I stare at you with a confused smile I just don&rsquo;t
+know how to react yet.</p><h2 id=it-seems-as-techie-as-they-say>It seems as techie as they say</h2><p>I don&rsquo;t have a large sample size to build on but five of the six people on our
+TopGolf league team works for tech companies. It isn&rsquo;t shocking to see large
+tech company offices as you drive through Austin. This is a stark contrast to
+what I&rsquo;d experienced in Southern California.</p><h2 id=californians-are-everywhere>Californians are everywhere</h2><p>This may not come as a surprise to those who have lived in Austin for years but
+it certainly surprised me how noticeable it was. In our apartment complex alone
+I&rsquo;ve spotted 5 California plates. Out and about it&rsquo;s not unusual to see people
+representing their hometown teams. A recent post on culturemap estimated from
+2010 to 2014 the Austin area gained on average 8 Californians per day. This was
+prior to Austin being named &ldquo;Best City to Live&rdquo; two years in a row by U.S. News
+and World Report. It&rsquo;s hard to imagine the influx to stop as long as
+California&rsquo;s cost of living continues to rise. We are sorry.</p><h2 id=the-food-has-been-outstanding>The food has been outstanding</h2><p>I was concerned about moving away from the land of California burritos in San
+Diego and the sprawling food metropolitan of LA but Austin was quick to quell
+those concerns. The BBQ is amazing and I have yet to go to the BBQ capital of
+Texas 35 minutes south in Lockhart. Breakfast Tacos may not be as good as San
+Diego burritos but they will definitely keep me satisfied until I go back. The
+pho I&rsquo;ve tried easily competes with the best I&rsquo;ve had in Little Saigon. The
+xiaolongbao (soup dumplings) are better than any I&rsquo;ve had in San Diego prior to
+Din Tai Fung opening. We have most of the top burger places, Hop Doddy, Shake
+Shack, Whataburger, In-n-out, and Austin&rsquo;s very own P Terry&rsquo;s (which was a
+pleasant surprise). And from my understanding, this is only the tip of the
+iceberg. I&rsquo;m looking forward to eating my way through Austin as the months roll
+by.</p><h2 id=your-money-goes-a-long-way-relative-to-california>Your money goes a long way relative to California</h2><p>As most know, one of the driving forces for the influx of new Austin residents
+is the cost of living. It was one of the driving forces for me. I&rsquo;ve noticed
+this most in the cost of gas and housing. Prior to leaving San Diego, it would
+cost anywhere from $3.70-$4.00 per gallon to fill up my tank. In Austin, it&rsquo;s
+been anywhere from $2.40-$2.80 per gallon. My Austin apartment costs roughly the
+same as the one I had in Oceanside except for its 3 years old versus 30 years
+old. The gym has more than 3 treadmills and the washing machine and dryer are
+in-unit. Getting the same quality apartment in San Diego would have cost upwards
+of 50% more depending on the location. On top of the general day-to-day
+expenses, Texas has no state income tax. There&rsquo;s a downside to all this though,
+I&rsquo;ve been made aware of the cost of living going up and going up fast. Housing
+prices in some neighborhoods reflect those in California, some residents are
+being forced out of neighborhoods they&rsquo;ve lived in for generations. It&rsquo;s
+unfortunate. Hopefully, it doesn&rsquo;t snowball into the issues we are seeing in the
+bay area.</p><h2 id=conclusion>Conclusion</h2><p>It has only been a month but so far Austin has exceeded all expectations and I
+look forward to experiencing what more this city has to offer. It will be
+interesting to see how my opinion of Austin changes over the course of a year
+and will follow up on this post then. If you&rsquo;ve moved to Austin from another
+state, I&rsquo;d love to hear your thoughts.</p></div></article></main></main><footer><footer><p>&copy; 2021 Mikey O'Brien</a></p></footer></footer></div></body></html>
