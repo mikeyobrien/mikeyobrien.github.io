@@ -1,7 +1,7 @@
 +++
 title = "Blogging with org-mode and ox-hugo"
 author = ["Mikey O'Brien"]
-tags = ["tag1"]
+tags = ["blog"]
 categories = ["category1"]
 draft = false
 +++
@@ -86,6 +86,7 @@ This is my post body
 ## Deploying {#deploying}
 
 To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github. Repo must be at `github.com/<username>/<username>.github.io`
+This assumes you are familiar with setting DNS records with your DNS provider. I am using AWS Route53.
 
 
 ### 1. Add the github action to `./github/workflows/gh-pages.yml` {#1-dot-add-the-github-action-to-dot-github-workflows-gh-pages-dot-yml}
@@ -126,10 +127,30 @@ jobs:
 ```
 
 
-### 2. Add custom domain to `static/CNAME` file {#2-dot-add-custom-domain-to-static-cname-file}
+### 2. Add verified domain to Github {#2-dot-add-verified-domain-to-github}
+
+Go to user settings &gt; pages &gt; add verified domain.
+<https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages>
 
 
-### 3. Update DNS to point to `<username>.github.io` {#3-dot-update-dns-to-point-to-username-dot-github-dot-io}
+### 3. Change repository Settings/Pages to the verified `mikeyobrien.com` {#3-dot-change-repository-settings-pages-to-the-verified-mikeyobrien-dot-com}
+
+
+### 3. Update DNS Records {#3-dot-update-dns-records}
+
+Set zone apex `==mikeyobrien.com==` as A record with github server ips,
+
+```nil
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+Set www subdomain with CNAME record to `mikeyobrien.github.io`
+
+
+### 5. Update Settings/Pages to deploy off the gh-pages branch {#5-dot-update-settings-pages-to-deploy-off-the-gh-pages-branch}
 
 
 ## Acknowledgements {#acknowledgements}

@@ -1,7 +1,7 @@
 #+title: All Posts
 #+hugo_base_dir: ../
 
-* DONE Blogging with org-mode and ox-hugo :tag1:@category1:
+* DONE Blogging with org-mode and ox-hugo :blog:@category1:
 :PROPERTIES:
 :EXPORT_FILE_NAME: Blogging with ox-hugo
 :END:
@@ -55,6 +55,7 @@ This is my post body
 **
 ** Deploying
 To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github. Repo must be at =github.com/<username>/<username>.github.io=
+This assumes you are familiar with setting DNS records with your DNS provider. I am using AWS Route53.
 *** 1. Add the github action to =./github/workflows/gh-pages.yml=
 #+begin_src
 name: github pages
@@ -90,8 +91,20 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 #+end_src
-*** 2. Add custom domain to =static/CNAME= file
-*** 3. Update DNS to point to =<username>.github.io=
+*** 2. Add verified domain to Github
+Go to user settings > pages > add verified domain.
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages
+*** 3. Change repository Settings/Pages to the verified =mikeyobrien.com=
+*** 3. Update DNS Records
+Set zone apex ===mikeyobrien.com=== as A record with github server ips,
+#+begin_src
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+#+end_src
+Set www subdomain with CNAME record to =mikeyobrien.github.io=
+*** 5. Update Settings/Pages to deploy off the gh-pages branch
 
 ** Acknowledgements
 - For more detailed installation instructions for ox-hugo see official instructions here: https://ox-hugo.scripter.co/doc/quick-start/
