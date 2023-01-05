@@ -54,7 +54,7 @@ This is my post body
    Export the post =C-c C-e H H=
 **
 ** Deploying
-To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github.
+To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github. Repo must be at =github.com/<username>/<username>.github.io=
 *** 1. Add the github action to =./github/workflows/gh-pages.yml=
 #+begin_src
 name: github pages
@@ -91,6 +91,7 @@ jobs:
           publish_dir: ./public
 #+end_src
 *** 2. Add custom domain to =static/CNAME= file
+*** 3. Update DNS to point to =<username>.github.io=
 
 ** Acknowledgements
 - For more detailed installation instructions for ox-hugo see official instructions here: https://ox-hugo.scripter.co/doc/quick-start/

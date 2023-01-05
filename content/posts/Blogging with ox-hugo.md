@@ -85,7 +85,7 @@ This is my post body
 
 ## Deploying {#deploying}
 
-To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github.
+To deploy I'm leveraging free Github pages. This method will deploy my blog whenever I push to github. Repo must be at `github.com/<username>/<username>.github.io`
 
 
 ### 1. Add the github action to `./github/workflows/gh-pages.yml` {#1-dot-add-the-github-action-to-dot-github-workflows-gh-pages-dot-yml}
@@ -127,6 +127,9 @@ jobs:
 
 
 ### 2. Add custom domain to `static/CNAME` file {#2-dot-add-custom-domain-to-static-cname-file}
+
+
+### 3. Update DNS to point to `<username>.github.io` {#3-dot-update-dns-to-point-to-username-dot-github-dot-io}
 
 
 ## Acknowledgements {#acknowledgements}
