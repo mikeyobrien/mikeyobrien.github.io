@@ -1,0 +1,11 @@
+baseURL = 'https://mikeyobrien.com/'
+languageCode = 'en-us'
+title = "Mikey O'Brien"
+
+[module]
+  [[module.imports]]
+    path = "github.com/adityatelange/hugo-PaperMod"
+
+
+[markup.goldmark.renderer]
+  unsafe = true
