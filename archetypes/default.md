@@ -1,6 +1,8 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-draft: true
+draft: false
+websiteURL: https://blog.mikeyobrien.com
+websiteName: Blog
 ---
 
