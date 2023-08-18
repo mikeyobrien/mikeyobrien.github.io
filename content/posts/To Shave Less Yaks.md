@@ -24,7 +24,7 @@ the translations.
 
 This is just one recent example; through the years, I've spent too much time 
 trying to be efficiently "productive," when I could just be productive. Most 
-times I end up being a bit more proficient without being productive. This 
+times I end up being a bit more efficient without being productive. This 
 reminds me of a quote I read recently:
 
 > The word “productivity” has the same origin as the Latin verb producere, which
