@@ -1,6 +1,7 @@
 +++
 title = "To Shave Less Yaks"
 author = ["Mikey O'Brien"]
+date = "2023-08-17"
 tags = ["blog"]
 categories = ["tools"]
 draft = false

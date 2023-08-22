@@ -1,6 +1,7 @@
 +++
 title = "Blogging with org-mode and ox-hugo"
 author = ["Mikey O'Brien"]
+date = "2023-01-05"
 tags = ["blog"]
 categories = ["category1"]
 draft = false
