@@ -64,9 +64,12 @@ ensuring that the generated artwork retains resemblance to the original.
 ![Alt text](../../images/SDXL/img2img.png)
 
 
-That's it! I'm pleased with the workflow so far. However, there are some issues,
-especially when varying positive attributes are added. The next step is to
-integrate loopback and/or prompt delays to better preserve the original image.
+That's it! I'm pleased with the workflow so far. However, I've noticed some issues
+with how some positive/negative attributes are applied. The next step is
+to better understand how to set attributes, integrate loopback and use prompt
+delays to better preserve the original image. At times I would like to preserve
+the original image as much as possible. 
+
 To try this workflow yourself, download or drag any of the generated images
 below into ComfyUI. Note that a few custom nodes are required: [WAS Node
 Suite](https://github.com/WASasquatch/was-node-suite-comfyui) and [Quality of
